@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- Root Context: defines shared resources visible to all other web components -->
+    <bean id = "dbcpDataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="org.mariadb.jdbc.Driver"
+          p:url="jdbc:mariadb://bigdata.cnuqv3vtwjri.ap-northeast-2.rds.amazonaws.com:3306/playground"
+          p:username="playground"
+          p:password="bigdata2020"
+          p:initialSize="10" p:maxTotal="7"
+          p:maxIdle="3"  />
+
+    <!--  myBatis setting #1 -->
+    <!--  SQL mapping framework -->
+    <!-- write SQL queries which is used in the program into one configuration file -->
+    <!-- and call it as simple name (Mapping) -->
+    <!-- improves brevity and maintenance by separating program code and SQL query-->
+    <!-- it is able to output as List without mapper in jdbcTemplate-->
+    <!-- related libraries : mybatis, mybatis-spring   -->
+    <!-- blog.mybatis.org -->
+    <!-- eclipse plugin : mybatis -->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="dbcpDataSource"
+          p:mapperLocations="classpath:mybatis3/*Mapper.xml"/>
+
+
+    <!-- myBatis setting #2 -->
+    <bean id="sqlSession"
+          class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory" index="0"/>
+    </bean>
+
+</beans>

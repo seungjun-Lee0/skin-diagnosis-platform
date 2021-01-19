@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+
+    <!-- logging system library -->
+    <Properties>
+        <!-- <Property name="layoutPattern">%d [%t] %-5level %c(%M:%L) - %m%n</Property> -->
+        <Property name="layoutPattern">%-5p : %c - %m%n</Property>
+    </Properties>
+
+    <!-- pinpoint the output location of the log -->
+    <!-- console : screen -->
+    <!-- file : external file -->
+    <!-- DB, JDBC : database -->
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${layoutPattern}" />
+        </Console>
+    </Appenders>
+
+    <!-- basic level : info -->
+    <Loggers>
+    <Root level="info" additivity="false" >
+        <AppenderRef ref="console" />
+    </Root>
+
+    <!-- set level to info in spring framework -->
+    <logger name="org.springframework.*" additivity="false" >
+        <AppenderRef ref="console" level="info" />
+    </logger>
+
+    <logger name="org.apache.ibatis.*" additivity="false" >
+        <AppenderRef ref="console" level="info" />
+    </logger>
+
+    <logger name="org.mybatis.*" additivity="false" >
+        <AppenderRef ref="console" level="debug" />
+    </logger>
+
+    <Logger name="org.springframework.jdbc.core.JdbcTemplate"
+            level="debug" />
+
+    <Logger name="org.springframework.jdbc.core.StatementCreatorUtils"
+            level="trace" />
+
+    <logger name="lsj.spring.mvc.*" additivity="false" >
+        <AppenderRef ref="console" level="info" />
+    </logger>
+
+    </Loggers>
+</Configuration>
