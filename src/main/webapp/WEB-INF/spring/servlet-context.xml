@@ -3,8 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
@@ -23,7 +30,7 @@
 
     <!-- Tiles setting -->
     <bean id="tilesConfigurer"
-                class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+          class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
             <list>
                 <value>/WEB-INF/tiles.xml</value>
@@ -33,9 +40,9 @@
 
     <!--  tiles view reslover setting -->
     <bean id="tilesViewResolver"
-                class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass"
-                        value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+                  value="org.springframework.web.servlet.view.tiles3.TilesView"/>
         <property name="order" value="1" />
     </bean>
 
@@ -46,5 +53,5 @@
         </bean>
 
 
-    <context:component-scan base-package="lsj.spring" />
+    <context:component-scan base-package="lsj.spring.project" />
 </beans>

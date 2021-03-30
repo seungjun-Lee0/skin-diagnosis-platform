@@ -42,7 +42,7 @@
     <Logger name="org.springframework.jdbc.core.StatementCreatorUtils"
             level="trace" />
 
-    <logger name="lsj.spring.mvc.*" additivity="false" >
+    <logger name="lsj.spring.project.*" additivity="false" >
         <AppenderRef ref="console" level="info" />
     </logger>
 
