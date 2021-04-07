@@ -13,4 +13,23 @@ public class EventController {
         mv.setViewName("event/list.tiles");
         return mv;
     }
+
+    @GetMapping("/event/detail")
+    public ModelAndView eventDetail(ModelAndView mv){
+        mv.setViewName("event/detail.tiles");
+        return mv;
+    }
+
+    @GetMapping("/event/write")
+    public ModelAndView eventWrite(ModelAndView mv){
+        mv.setViewName("event/write.tiles");
+        return mv;
+    }
+
+    @GetMapping("/event/modify")
+    public ModelAndView eventModify(ModelAndView mv){
+        mv.setViewName("event/modify.tiles");
+        return mv;
+    }
+
 }

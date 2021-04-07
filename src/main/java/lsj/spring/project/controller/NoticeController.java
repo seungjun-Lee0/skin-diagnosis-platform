@@ -30,6 +30,22 @@ public class NoticeController {
         return mv;
     }
 
+    @GetMapping("/notice/write")
+    public ModelAndView noticeWrite(String bno, ModelAndView mv){
+        nsrv.viewCountNotice(bno);
+
+        mv.setViewName("notice/write.tiles");
+        return mv;
+    }
+
+    @GetMapping("/notice/modify")
+    public ModelAndView noticeModify(String bno, ModelAndView mv){
+        nsrv.viewCountNotice(bno);
+
+        mv.setViewName("notice/modify.tiles");
+        return mv;
+    }
+
     @GetMapping("/notice/find")
     public ModelAndView find(ModelAndView mv, String cp, String findtype, String findkey) {
         mv.setViewName("notice/list.tiles");

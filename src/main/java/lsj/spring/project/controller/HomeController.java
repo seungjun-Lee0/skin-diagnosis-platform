@@ -21,4 +21,22 @@ public class HomeController {
         return mv;
     }
 
+    @RequestMapping("/tos")
+    public ModelAndView tos(ModelAndView mv){
+        mv.setViewName("tos.tiles");
+        return mv;
+    }
+
+    @RequestMapping("/privacy")
+    public ModelAndView privacy(ModelAndView mv){
+        mv.setViewName("privacy.tiles");
+        return mv;
+    }
+
+    @RequestMapping("/counsel")
+    public ModelAndView counsel(ModelAndView mv){
+        mv.setViewName("counsel.tiles");
+        return mv;
+    }
+
 }
