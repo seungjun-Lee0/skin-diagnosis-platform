@@ -40,9 +40,9 @@ window.onYouTubePlayerAPIReady = function() {
         initPlayer(container[i])
     }
 }
-function onMainPlayerReady(event) {
-    //event.target.playVideo();
-}
+
+function onMainPlayerReady(event) {}
+
 function onPlayerMainStateChange(event) {
     if(event.data === 0){
         ytplayer.stopVideo();
