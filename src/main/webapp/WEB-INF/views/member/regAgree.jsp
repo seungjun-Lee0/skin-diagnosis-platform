@@ -1,20 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div id="contents">
-    <div class="join_wrap step_1">
+<div id="contents" style="border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px;">
         <div class="join_title">
             <h4 class="title">이용약관 및 개인정보 동의</h4>
         </div>
-
-
         <form name="signform" method="post" action="join-02.html"  ENCTYPE="multipart/form-data">
             <input type="hidden" name="formmode" value="save">
             <input type="hidden" name="snsid" id="snsid" title="SNS 연동" value="">
             <input type="hidden" name="snstype" id="snstype" title="SNS 연동" value="">
 
 
-            <div class="u_page_wrap">
-                <ul class="clause_list">
+            <div class="signIn_page_wrap">
+                <ul class="tos_list">
                     <li>
                         <div class="agree_box">
                             <p>이용약관</p>
@@ -238,13 +235,14 @@
                             <p>개인정보 제 3자 제공 및 공유안내</p>
                         </div>
                         <div class="textarea_box_border">
-                            <div class="textarea_box scrollSt">
-                                개인정보 제 3자 제공 및 공유안내						</div>
+                            <div class="textarea_box">
+                                개인정보 제 3자 제공 및 공유안내
+                            </div>
                         </div>
                     </li>
                 </ul>
 
-                <div class="total_clause_bx chk_area">
+                <div class="total_pos_bx">
                     <div class="left">
                         <input type="checkbox"  id="yark_all" name="yark_all" onClick="checkall_box(this.form)">
                         <label for="yark_all">전체동의</label>
@@ -282,13 +280,9 @@
                     </ul>
                 </div>
 
-                <div class="join_btn_bx">
+                <div class="join_btn">
                     <a href="/member/joinForm" class="btn-type-01">다음 단계로</a>
                 </div>
             </div>
         </form>
-
-
-
-    </div>
 </div>

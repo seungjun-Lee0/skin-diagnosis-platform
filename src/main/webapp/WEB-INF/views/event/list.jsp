@@ -23,19 +23,17 @@
                 </select>
                 <input type="text" name="findkey" value="" required id="findkey" maxlength="20" placeholder="검색어를 입력해 주세요">
                 <button type="button" class="submit" id="findbtn">
-                    <img src="/images/logo/search.png" />
+                    <img src="/images/paging/search.png" />
                 </button>
             </form>
         </div>
     </div>
 
-
-
     <div class="event_list">
         <ul class="list clearfix">
             <li class="item">
-                <a href="/pc/community/event_end.html?bmain=view&uid=19&mode=" class="wrap">
-                    <img src="/images/event1.jpg">
+                <a href="/event/detail" class="wrap">
+                    <img src="/images/event/thumbnail/event1.jpg">
                     <div class="txt_bx">
                         <div class="txt_wrap">
                             <p class="tit">[11월 EVENT]With CORONA, 아자아자 대한민국</p>
@@ -46,8 +44,8 @@
             </li>
 
             <li class="item">
-                <a href="/pc/community/event_end.html?bmain=view&uid=18&mode=" class="wrap">
-                    <img src="/images/event1.jpg">
+                <a href="/event/detail" class="wrap">
+                    <img src="/images/event/thumbnail/event2.jpg">
                     <div class="txt_bx">
                         <div class="txt_wrap">
                             <p class="tit">5월 가정의달 이벤트</p>
@@ -58,8 +56,8 @@
             </li>
 
             <li class="item">
-                <a href="/pc/community/event_end.html?bmain=view&uid=17&mode=" class="wrap">
-                    <img src="/images/event1.jpg">
+                <a href="/event/detail" class="wrap">
+                    <img src="/images/event/thumbnail/event3.jpg">
                     <div class="txt_bx">
                         <div class="txt_wrap">
                             <p class="tit">더블로 골드 리프팅 이벤트</p>
@@ -70,8 +68,8 @@
             </li>
 
             <li class="item">
-                <a href="/pc/community/event_end.html?bmain=view&uid=16&mode=" class="wrap">
-                    <img src="/images/event1.jpg">
+                <a href="/event/detail" class="wrap">
+                    <img src="/images/event/thumbnail/event4.jpg">
                     <div class="txt_bx">
                         <div class="txt_wrap">
                             <p class="tit">뜨거운 여름! 티끌없이 시원하게 노출하자!</p>
@@ -83,25 +81,25 @@
         </ul>
     </div>
 
-    <div class="xans-element- xans-board xans-board-buttonlist-1002 xans-board-buttonlist xans-board-1002 button_g ">
+    <div class="button_pos">
         <div class="btnArea M b_right">
-            <a href="/board/free/write.html?board_no=1" class="displaynone black_s">작성하기</a>
+            <a href="/event/write" class="black_s">작성하기</a>
         </div>
     </div>
 
 
-    <div class="xans-element- xans-board xans-board-paging-1002 xans-board-paging xans-board-1002 ec-base-paginate">
+    <div class="the3-base-paginate">
         <a href="?board_no=1&page=1">
-            <img src="/images/logo/paging_left_arrow01.png" alt="이전 페이지"/>
+            <img src="/images/paging/paging_left_arrow01.png" alt="이전 페이지"/>
         </a>
         <ol>
-            <li class="xans-record-"><a href="?board_no=1&page=1" class="this">1</a></li>
-            <li class="xans-record-"><a href="?board_no=1&page=2" class="other">2</a></li>
-            <li class="xans-record-"><a href="?board_no=1&page=3" class="other">3</a></li>
-            <li class="xans-record-"><a href="?board_no=1&page=4" class="other">4</a></li>
+            <li><a href="?board_no=1&page=1" class="this">1</a></li>
+            <li><a href="?board_no=1&page=2">2</a></li>
+            <li><a href="?board_no=1&page=3">3</a></li>
+            <li><a href="?board_no=1&page=4">4</a></li>
         </ol>
-        <a href="?board_no=1&page=2" class="last">
-            <img src="/images/logo/paging_right_arrow01.png" alt="다음 페이지"/>
+        <a href="?board_no=1&page=2">
+            <img src="/images/paging/paging_right_arrow01.png" alt="다음 페이지"/>
         </a>
     </div>
 
