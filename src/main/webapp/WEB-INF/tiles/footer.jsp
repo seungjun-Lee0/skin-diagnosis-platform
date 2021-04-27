@@ -6,9 +6,10 @@
         <ul>
             <li style="width:26%;padding-right:0;">
                 <h2>CS CENTER</h2>
-                <h1>070-8819-0074</h1>
-                <p>평일 : 9:00 ~ 18:00 ( 점심 : 12:00 ~ 13:00 )</p>
-                <p>토요일, 일요일, 공휴일 휴무</p>
+                <h1>02-511-0079</h1>
+                <p>월,화,수,금 : 오전10시 ~ 오후 8시</p>
+                <p>토요일 : 오전10시 ~ 오후 4시</p>
+                <p>목, 일요일 및 공휴일 휴진</p>
             </li>
             <li style="width:34%;padding-right:0;">
                 <h2 style="margin-bottom:7px;">NOTICE</h2>
@@ -42,28 +43,27 @@
 <div id="footer_bottom" class="xans-element- xans-layout xans-layout-footer "><div class="footer_inner" style="border-top:1px dashed #ddd;padding-top:20px;">
     <div class="foot_menu">
         <ul>
-            <li><a href="/member/privacy.html"><strong>개인정보처리방침</strong></a></li>
-            <li><a href="/member/agreement.html">이용약관</a></li>
-            <li><a href="/shopinfo/guide.html">이용안내</a></li>
+            <li><a href="/tos">이용약관</a></li>
+            <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
         </ul>
         <div class="f_right">
         <ul>
-            <li><a href="https://blog.naver.com/the30mall" target="_blank"><img src="/innoy/images/sns_blog.png" height="20px" alt="blog"/></a></li>
-            <li><a href="https://www.instagram.com/dr.wellmadeone/" target="_blank"><img src="/innoy/images/sns_instagram.png" height="20px" alt="instagram"/></a></li>
-            <li><a href="https://www.facebook.com/dr.wellmade/" target="_blank"><img src="/innoy/images/sns_facebook.png" height="20px" alt="facebook"/></a></li>
+            <li><a href="https://cafe.naver.com/memoryforum2" target="_blank"><img src="/images/sns/naver_cafe.png" height="20px" alt="cafe"/></a></li>
+            <li><a href="https://blog.naver.com/kota30" target="_blank"><img src="/images/sns/naver_blog.png" height="20px" alt="blog"/></a></li>
+            <li><a href="https://www.instagram.com/the3.0clinic/" target="_blank"><img src="/images/sns/instagram.png" height="20px" alt="instagram"/></a></li>
+            <li><a href="https://www.facebook.com/the3.0clinic/" target="_blank"><img src="/images/sns/facebook.png" height="20px" alt="facebook"/></a></li>
         </ul>
         </div>
     </div>
     <div class="foot_info">
         <span>상호 : (주)더삼점영</span>
         <span>대표 : 황은주</span>
-        <span>사업자등록번호 : 211-88-88389</span>
-        <span>통신판매업신고 : 제2013-서울강남-01395호</span> <span><a href="#none" onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118888389', 'bizCommPop', 'width=750, height=950;');return false;">[사업자정보확인]</a></span>
-        <br/><span>전화 : 070-8819-0074</span>
-        <span>팩스 : 02-511-0084</span>
-        <span>이메일 : <a href="mailto:the30mall@naver.com">the30mall@naver.com</a> / keunnamoo@daum.net</span>
-        <span>주소 : 135892 서울특별시 강남구 논현로155길 6 / 602호 (신사동,신사프라자)</span>
-        <span>개인정보보호책임자 : <a href="mailto:the30mall@naver.com">황은주</a></span>
+        <span>사업자등록번호 : 211-08-12612</span>
+        <span>주소 : 서울특별시 강남구 압구정로 28길 48. 참빌딩 4층</span>
+        <br/>
+        <span>전화 : 02-511-0079</span>
+        <span>이메일 : <a href="mailto:hunny8553@gmail.com">hunny8553@gmail.com</a></span>
+        <span>개인정보보호책임자 : <a href="mailto:hunny8553@gmail.com">황은주</a></span>
     </div>
 </div>
 
