@@ -2091,6 +2091,36 @@ position: relative;
     padding: 10px 10px;
 }
 
+.findpage .findnav {
+    display: inline-block;
+    width: calc(50% - 40px);
+    padding: 0;
+    margin: 5px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.findpage .findnav h3 {
+    padding: 0 0 5px;
+    font-size: 13px;
+}
+
+.findpage .findnav a.find_box {
+    display: block;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.findBtnActive{
+    border-bottom: 2px solid #adadad;
+}
+
+a.find_box:hover{
+    border-bottom: 2px solid #adadad;
+}
+
+
 .id {
     width: 100%;
     border:none;
@@ -2111,7 +2141,7 @@ position: relative;
     background: none;
 }
 
-#loginbtn {
+#loginbtn, #fidbtn, #fpwdbtn {
     position:relative;
     left:40%;
     transform: translateX(-50%);
@@ -2129,7 +2159,50 @@ position: relative;
     display:inline;
 }
 
-#loginbtn:hover {
+#loginbtn:hover, #fidbtn:hover, #fpwdbtn:hover {
+    background-position: right;
+}
+
+#cancelbtn {
+    position:relative;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+    width:36%;
+    left: 16%;
+    height:40px;
+    background: linear-gradient(125deg,lightgrey,dimgrey,lightgrey);
+    background-position: left;
+    background-size: 200%;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+}
+#cancelbtn:hover {
+    background-position: right;
+}
+
+#withdrawbtn {
+    position:relative;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+    width:36%;
+    left: 19%;
+    height:40px;
+    background: linear-gradient(125deg,lightgrey,dimgrey,lightgrey);
+    background-position: left;
+    background-size: 200%;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+}
+
+#withdrawbtn:hover {
     background-position: right;
 }
 
@@ -2218,7 +2291,12 @@ h4.title{
 
 .join_btn {
     text-align: center;
-    margin-top: 70px;
+    margin-top: 30px;
+}
+
+.join_btn a{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .btn-type-01 {
@@ -2434,7 +2512,7 @@ h4.subtit {
 
 .mypage .pageMain {
     display: inline-block;
-    width: calc(33% - 12px);
+    width: calc(32.9% - 12px);
     padding: 0;
     margin: 5px;
     border: 1px solid #ddd;
