@@ -244,8 +244,8 @@
 
                 <div class="total_pos_bx">
                     <div class="left">
-                        <input type="checkbox"  id="yark_all" name="yark_all" onClick="checkall_box(this.form)">
-                        <label for="yark_all">전체동의</label>
+                        <input type="checkbox"  id="select_all" name="agree" value="selectall" onClick="selectAll(this)">
+                        <label for="select_all">전체동의</label>
                     </div>
                     <ul class="right">
                         <li>
@@ -254,8 +254,8 @@
                             </p>
                             <div class="c_box">
                                 <span>
-                                    <input type="checkbox" id="yark1" name="yark1" value="Y" title="서비스이용약관">
-                                <label for="yark1">동의</label>
+                                    <input type="checkbox" id="agree1" name="agree" title="서비스이용약관">
+                                <label for="agree1">동의</label>
                                 </span>
                             </div>
                         </li>
@@ -264,8 +264,8 @@
                                 개인정보 수집 및 이용안내에 동의하십니까?
                             </p>
                             <div class="c_box">
-                                <span><input type="checkbox" id="yark2" name="yark2" value="Y" title="개인정보 수집 및 이용안내">
-                                <label for="yark2">동의</label></span>
+                                <span><input type="checkbox" id="agree2" name="agree" title="개인정보 수집 및 이용안내">
+                                <label for="agree2">동의</label></span>
                             </div>
                         </li>
                         <li>
@@ -273,15 +273,15 @@
                                 개인정보 제 3자 제공 및 공유에 동의하십니까?
                             </p>
                             <div class="c_box">
-                                <span><input type="checkbox" id="yark3" name="yark3" value="Y" title="개인정보 제 3자 제공 및 공유">
-                                <label for="yark3">동의</label></span>
+                                <span><input type="checkbox" id="agree3" name="agree" title="개인정보 제 3자 제공 및 공유">
+                                <label for="agree3">동의</label></span>
                             </div>
                         </li>
                     </ul>
                 </div>
 
                 <div class="join_btn">
-                    <a href="/member/joinForm" class="btn-type-01">다음 단계로</a>
+                    <a href="#" id="agreed" class="btn-type-01">다음 단계로</a>
                 </div>
             </div>
         </form>

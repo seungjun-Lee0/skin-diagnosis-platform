@@ -38,7 +38,7 @@
 <script src="/js/header.js"></script>
 <script src="/js/video.js"></script>
 <script src="/js/swiper.js"></script>
-<script src="/js/froala.js"></script>
+<script src="/js/member.js"></script>
 
 
 </body>

@@ -35,4 +35,22 @@
         <constructor-arg ref="sqlSessionFactory" index="0"/>
     </bean>
 
+    <!-- Mail -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="82tool82@gmail.com" />
+        <property name="password" value="lgbbvnqgrynnchyi" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtps.ssl.trust">*</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>

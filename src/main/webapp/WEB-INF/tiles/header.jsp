@@ -23,15 +23,20 @@
         <!-- 회원 -->
         <div class="util_right">
             <div class="xans-element- xans-layout xans-layout-statelogoff loginoff "><ul>
-                <li><a href="/member/login">LOGIN</a></li>
-                <li><a href="/mypage/myInfo">MY PAGE</a></li>
-                <li><a href="/member/joinAgree">JOIN US</a></li>
+                <c:if test="${empty sessionScope.MyInfo}">
+                    <li><a href="/member/login">LOGIN</a></li>
+                    <li><a href="/member/regAgree">JOIN US</a></li>
+                </c:if>
+                <c:if test="${not empty sessionScope.MyInfo}">
+                    <li><a href="/mypage/myInfo">MY PAGE</a></li>
+                    <li><a href="/member/logout">LOGOUT</a></li>
+                </c:if>
             </ul>
             </div>
         </div>
 
         <!-- 상단 로고 -->
-        <div><a href="/home"><img src="/images/logo/main_logo.png" style="margin-top:20px;max-height:60px;" alt="the 3.0"/></a>
+        <div><a href="/"><img src="/images/logo/main_logo.png" style="margin-top:20px;max-height:60px;" alt="the 3.0"/></a>
         </div>
 
 
