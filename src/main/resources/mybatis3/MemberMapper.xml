@@ -3,48 +3,48 @@
 <mapper namespace="member">
 
     <insert id="insertMember" statementType="PREPARED" parameterType="lsj.spring.project.vo.Member">
-        insert into the3_member (uname, uid, upwd, salt, uemail, utel,sms,mail)
+        insert into the3.the3_member (uname, uid, upwd, salt, uemail, utel,sms,mail)
         values (#{uname}, #{uid}, #{upwd}, #{salt},#{uemail}, #{utel}, #{sms}, #{mail})
     </insert>
 
     <select id="selectOneUserid" statementType="PREPARED" parameterType="String" resultType="int">
-        select count(uid) cnt from the3_member where uid = #{uid}
+        select count(uid) cnt from the3.the3_member where uid = #{uid}
     </select>
 
     <select id="selectOneUserid2" statementType="PREPARED" parameterType="lsj.spring.project.vo.Member" resultType="int">
-        select count(uid) cnt from the3_member where uid = #{uid} and uemail = #{uemail}
+        select count(uid) cnt from the3.the3_member where uid = #{uid} and uemail = #{uemail}
     </select>
 
     <select id="selectOneUemail" statementType="PREPARED" parameterType="String" resultType="int">
-        select count(uemail) cnt from the3_member where uemail = #{uemail}
+        select count(uemail) cnt from the3.the3_member where uemail = #{uemail}
     </select>
 
     <select id="findOneUserid" statementType="PREPARED" parameterType="lsj.spring.project.vo.Member" resultType="string">
-        select uid from the3_member where uemail = #{uemail} and uname = #{uname}
+        select uid from the3.the3_member where uemail = #{uemail} and uname = #{uname}
     </select>
 
     <update id="updateUserpwd" statementType="PREPARED" parameterType="lsj.spring.project.vo.Member">
-        update the3_member set upwd = #{upwd}, salt = #{salt} where uid = #{uid}
+        update the3.the3_member set upwd = #{upwd}, salt = #{salt} where uid = #{uid}
     </update>
 
     <select id="selectLogin" statementType="PREPARED" parameterType="map" resultType="int">
-        select count(uid) cnt from the3_member where uid = #{uid} and upwd = #{upwd} and salt = #{salt}
+        select count(uid) cnt from the3.the3_member where uid = #{uid} and upwd = #{upwd} and salt = #{salt}
     </select>
 
     <select id="selectSalt" statementType="PREPARED" parameterType="String" resultType="String">
-        select salt from the3_member where uid = #{uid}
+        select salt from the3.the3_member where uid = #{uid}
     </select>
 
     <select id="showOneMember" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.Member">
-        select mno, uname, uid, uemail, utel, regdate, sms, mail from the3_member where uid = #{uid}
+        select mno, uname, uid, uemail, utel, regdate, sms, mail from the3.the3_member where uid = #{uid}
     </select>
 
     <update id="updateMember" statementType="PREPARED" parameterType="map">
-        update the3_member set upwd = #{upwd}, salt = #{salt}, uemail = #{uemail}, utel = #{utel}, mail = #{mail}, sms = #{sms} where uid = #{uid}
+        update the3.the3_member set upwd = #{upwd}, salt = #{salt}, uemail = #{uemail}, utel = #{utel}, mail = #{mail}, sms = #{sms} where uid = #{uid}
     </update>
 
     <delete id="deleteMember" statementType="PREPARED" parameterType="String">
-        delete from the3_member where uid = #{uid}
+        delete from the3.the3_member where uid = #{uid}
     </delete>
 
 </mapper>

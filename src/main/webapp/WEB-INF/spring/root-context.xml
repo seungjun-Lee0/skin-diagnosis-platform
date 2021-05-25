@@ -6,13 +6,14 @@
 
     <!-- Root Context: defines shared resources visible to all other web components -->
     <bean id = "dbcpDataSource"
-          class="org.apache.commons.dbcp2.BasicDataSource"
-          p:driverClassName="org.mariadb.jdbc.Driver"
-          p:url="jdbc:mariadb://bigdata.cnuqv3vtwjri.ap-northeast-2.rds.amazonaws.com:3306/playground"
-          p:username="playground"
-          p:password="bigdata2020"
-          p:initialSize="10" p:maxTotal="7"
-          p:maxIdle="3"  />
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          lazy-init="false">
+
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://the3database.cfy0vy5mmvs9.ap-northeast-2.rds.amazonaws.com:3306/the3?useSSL=false"/>
+        <property name="username" value="admin"/>
+        <property name="password" value="bigdata2022" />
+    </bean>
 
     <!--  myBatis setting #1 -->
     <!--  SQL mapping framework -->
