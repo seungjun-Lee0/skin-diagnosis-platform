@@ -10,9 +10,9 @@
           lazy-init="false">
 
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://the3database.cfy0vy5mmvs9.ap-northeast-2.rds.amazonaws.com:3306/the3?useSSL=false"/>
-        <property name="username" value="admin"/>
-        <property name="password" value="bigdata2022" />
+        <property name="url" value=""/>
+        <property name="username" value=""/>
+        <property name="password" value="" />
     </bean>
 
     <!--  myBatis setting #1 -->
