@@ -19,10 +19,10 @@
 
         <h2>아이디 찾기</h2>
         <div class="idForm">
-            <input type="text" id="uname" name="uname" class="id" placeholder="이름을 입력해주세요">
+            <input type="text" id="uname" name="uname" class="id" placeholder="이름을 입력해주세요" onkeyup="if(window.event.keyCode==13){ findid() }" >
         </div>
         <div class="passForm">
-            <input type="text" id="uemail" name="uemail" class="id" placeholder="이메일을 입력해주세요">
+            <input type="text" id="uemail" name="uemail" class="id" placeholder="이메일을 입력해주세요" onkeyup="if(window.event.keyCode==13){ findid() }" >
         </div>
         <button type="button" id="fidbtn" name="fidbtn" class="btn">
             확인

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+
+    <insert id="insertNotice" statementType="PREPARED" parameterType="lsj.spring.project.vo.Notice">
+        insert into the3.the3_notice (title, content, fixed, fnames, uuid)
+        values (#{title}, #{content}, #{fixed}, #{fnames}, #{uuid})
+    </insert>
+
+    <select id="selectNotice" statementType="PREPARED" parameterType="int" resultType="lsj.spring.project.vo.Notice">
+        select * from the3.the3_notice where fixed = 'false' order by bno desc limit #{snum}, 10
+    </select>
+
+    <select id="selectNoticeAll" statementType="PREPARED" resultType="lsj.spring.project.vo.Notice">
+        select * from the3.the3_notice order by bno desc
+    </select>
+
+    <select id="findSelect" statementType="PREPARED" parameterType="map" resultType="lsj.spring.project.vo.Notice">
+        select * from the3.the3_notice where fixed = 'false'
+        <if test="ftype != 'titcont'">
+            and ${ftype} like concat('%',#{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            and title like concat('%',#{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+        order by bno desc limit #{snum}, 10
+    </select>
+
+    <select id="selectOne" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.Notice">
+        select * from the3.the3_notice where bno = #{bno}
+    </select>
+
+    <select id="countNotice" statementType="PREPARED" resultType="int">
+        select count(bno) cnt from the3.the3_notice
+    </select>
+
+    <select id="findSelectCount" statementType="PREPARED" parameterType="map" resultType="int">
+        select count(bno) cnt from the3.the3_notice where fixed = 'false'
+        <if test="ftype != 'titcont'">
+            and ${ftype} like concat('%', #{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            and title like concat('%', #{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+    </select>
+
+    <update id="viewNotice" statementType="PREPARED" parameterType="String">
+        update the3.the3_notice set views = views + 1 where bno = #{bno}
+    </update>
+    
+    <update id="modifyNotice" statementType="PREPARED" parameterType="lsj.spring.project.vo.Notice">
+        update the3.the3_notice set title = #{title}, content = #{content}, fixed = #{fixed}, uuid = #{uuid}
+        <if test="todie != ''">
+            , fnames = #{fnames}
+        </if>
+        where bno = #{bno};
+    </update>
+
+    <delete id="deleteNotice" statementType="PREPARED"
+            parameterType="int">
+        delete from the3.the3_notice
+        where bno = #{bno}
+    </delete>
+
+    <select id="readFnames" statementType="PREPARED"
+            parameterType="String"
+            resultType="String">
+        select fnames from the3.the3_notice where bno = #{bno}
+    </select>
+
+    <select id="readUuid" statementType="PREPARED"
+            parameterType="String"
+            resultType="String">
+        select uuid from the3.the3_notice where bno = #{bno}
+    </select>
+
+</mapper>

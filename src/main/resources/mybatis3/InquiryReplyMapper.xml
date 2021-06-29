@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply">
+
+
+    <insert id="insertComment" statementType="PREPARED"
+            parameterType="lsj.spring.project.vo.InquiryReply">
+        insert into the3.the3_inquiryReply (content, uid, bno)
+        values (#{content}, #{uid}, #{bno});
+    </insert>
+
+    <update id="updateComment" statementType="PREPARED"
+            parameterType="lsj.spring.project.vo.InquiryReply">
+        update the3.the3_inquiryReply set content = #{content}, regdate = current_timestamp where rno = #{rno}
+    </update>
+
+    <delete id="deleteComment" statementType="PREPARED"
+            parameterType="lsj.spring.project.vo.InquiryReply">
+        delete from the3.the3_inquiryReply where rno = #{rno}
+    </delete>
+
+    <select id="selectReply" statementType="PREPARED"
+            parameterType="String"
+            resultType="lsj.spring.project.vo.InquiryReply">
+        select * from the3.the3_inquiryReply where bno = #{bno}
+        order by rno;
+    </select>
+
+    <select id="countComment" statementType="PREPARED" resultType="int">
+        select count(rno) cnt from the3.the3_inquiryReply where bno = #{bno}
+    </select>
+</mapper>

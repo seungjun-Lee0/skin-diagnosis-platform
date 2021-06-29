@@ -24,29 +24,26 @@ public class MemberServiceImpl implements MemberService{
         String SALT = getSALT();
 
         m.setUpwd(Hashing(m.getUpwd().getBytes(),SALT));
-
-
         m.setSalt(SALT);
         mbdao.insertMember(m);
     }
 
-    // 비밀번호 해싱
     private String Hashing(byte[] password, String Salt) throws Exception {
 
-        MessageDigest md = MessageDigest.getInstance("SHA-256");	// SHA-256 해시함수를 사용
+        MessageDigest md = MessageDigest.getInstance("SHA-256");	// use hash function SHA-256
 
         // key-stretching
         for(int i = 0; i < 10000; i++) {
-            String temp = Byte_to_String(password) + Salt;	// 패스워드와 Salt 를 합쳐 새로운 문자열 생성
-            md.update(temp.getBytes());						// temp 의 문자열을 해싱하여 md 에 저장해둔다
-            password = md.digest();							// md 객체의 다이제스트를 얻어 password 를 갱신한다
+            String temp = Byte_to_String(password) + Salt;	// create new string object by combining password and salt
+            md.update(temp.getBytes());						// save the hashed string object into md
+            password = md.digest();							// completes the hash computation and update it as a password
         }
 
         return Byte_to_String(password);
     }
 
-    // SALT 값 생성
-    private String getSALT() throws Exception {
+    // create the SALT value
+    private String getSALT() {
         SecureRandom rnd = new SecureRandom();
         byte[] temp = new byte[SALT_SIZE];
         rnd.nextBytes(temp);
@@ -55,7 +52,7 @@ public class MemberServiceImpl implements MemberService{
 
     }
 
-    // 바이트 값을 16진수로 변경해준다
+    // alter the byte value as hexadecimal number
     private String Byte_to_String(byte[] temp) {
         StringBuilder sb = new StringBuilder();
         for(byte a : temp) {

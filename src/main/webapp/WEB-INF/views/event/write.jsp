@@ -1,12 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    String strReferer = request.getHeader("referer");
+
+    if(strReferer == null){
+%>
+<script language="javascript">
+    alert("정상적인 경로를 통해 다시 접근해 주세요.");
+    document.location.href="/";
+</script>
+<%
+        return;
+    }
+%>
+
 <div id="contents">
 
     <div class="titleArea">
-        <h2>EVENT</h2>
+        <h2><a href="/event/list?cp=1">EVENT</a></h2>
         <p>저희 피부과가 준비한 다양하고 풍성한 이벤트를 확인하세요.</p>
     </div>
 
-    <form id="BoardDelForm" name="" action="/exec/front/Board/del/1" method="post" target="_self" enctype="multipart/form-data" >
+    <form id="eventfrm" name="eventfrm">
         <div class="the3-base-table writeType">
             <table border="0" summary="">
                 <caption>이벤트 글쓰기</caption>
@@ -17,29 +32,33 @@
                 <tbody>
                 <tr style="border-bottom: 1px solid #ddd;">
                     <td colspan="2" style="border-bottom:0;color:#000;">
-                        제&nbsp;&nbsp;목&nbsp;:&nbsp;<input name="Etitle" id="Etitle" title="글제목" maxlength="30" type="text" placeholder="제목을 입력하세요." style="width: 1134px; margin-left: 20px;"/>
+                        제&nbsp;&nbsp;목&nbsp;:&nbsp;<input name="title" id="title" title="글제목" maxlength="30" type="text" placeholder="제목을 입력하세요." style="width: 90%; margin-left: 20px;"/>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <div class="fr-view fr-view-article">
-                            내&nbsp;&nbsp;용&nbsp;:&nbsp;<textarea name="Econtent" id="Econtent" style="width: 1130px; height: 250px; margin-left: 20px;"></textarea>
+                            내&nbsp;&nbsp;용&nbsp;:&nbsp;<textarea name="content" id="content" style="width: 89.6%; height: 250px; margin-left: 20px;"></textarea>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        첨부&nbsp;파일&nbsp;:&nbsp;<input type="file" name="Eimg1" id="Eimg1" accept="image/*">
+                        <div class="fr-view fr-view-article">
+                            기간&nbsp;선택&nbsp;:&nbsp;<input type="text" name="sdate" id="sdate" readonly> ~ <input type="text" name="edate" id="edate" readonly>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        첨부&nbsp;파일&nbsp;:&nbsp;<input type="file" name="Eimg2" id="Eimg2" accept="image/*">
+                        첨부&nbsp;파일&nbsp;:&nbsp;<input type="file" name="img" id="img1" onchange="efileTypeCheck1(this)" accept="image/*">
+                        <label for="img1">&nbsp; &blacktriangleleft;썸네일 이미지 (사이즈 : 580 x 210)</label>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        첨부&nbsp;파일&nbsp;:&nbsp;<input type="file" name="Eimg3" id="Eimg3" accept="image/*">
+                        첨부&nbsp;파일&nbsp;:&nbsp;<input type="file" name="img" id="img2" onchange="efileTypeCheck2(this)" accept="image/*">
+                        <label for="img2">&nbsp; &blacktriangleleft;컨텐츠 이미지 (사이즈 : 1280 x &divonx;)</label>
                     </td>
                 </tr>
                 </tbody>
@@ -47,12 +66,14 @@
         </div>
         <div class="button_pos">
             <div class="btnArea M b_left">
-                <a href="/event/list" class="black_s">작성취소</a>
+                <a href="/event/list?cp=1" class="black_s">작성취소</a>
             </div>
 
             <div class="btnArea M b_right">
-                <a href="#none" onclick="BOARD_READ.article_delete('BoardDelForm','1');" class="white_s">작성완료</a>
+                <a id="ewritefrm" class="white_s">작성완료</a>
             </div>
         </div>
+        <input type="hidden" id="ftype1" name="ftype1">
+        <input type="hidden" id="ftype2" name="ftype2">
     </form>
 </div>

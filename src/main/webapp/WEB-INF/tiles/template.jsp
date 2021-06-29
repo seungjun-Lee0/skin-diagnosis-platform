@@ -11,10 +11,14 @@
     <meta name="author" content="더삼점영 임시 웹사이트" />
 
     <link rel="stylesheet" type="text/css" href="/css/the3.css" />
+    <link rel="stylesheet" type="text/css" href="/css/modal.css" />
     <link rel="stylesheet" type="text/css" href="/css/froala.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <title>더3.0피부과 임시 누리집</title>
 
@@ -30,15 +34,17 @@
     <tiles:insertAttribute name="footer" />
 </div>
 
-<!-- jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
-
 <script src="/js/header.js"></script>
 <script src="/js/video.js"></script>
 <script src="/js/swiper.js"></script>
 <script src="/js/member.js"></script>
+<script src="/js/notice.js"></script>
+<script src="/js/date.js"></script>
+<script src="/js/event.js"></script>
+<script src="/js/inquiry.js"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/diagnosis.js"></script>
+<script src="/js/home.js"></script>
 
 
 </body>

@@ -11,7 +11,7 @@
     </appender>
 
     <!-- Application Loggers -->
-    <logger name="lsj.spring.mvc">
+    <logger name="lsj.spring.project">
         <level value="info" />
     </logger>
 

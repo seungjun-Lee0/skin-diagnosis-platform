@@ -1,4 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- footer -->
 <hr class="layout"/><div id="footer_top" class="xans-element- xans-layout xans-layout-footer "><div class="footer_inner">
@@ -13,26 +16,14 @@
             </li>
             <li style="width:34%;padding-right:0;">
                 <h2 style="margin-bottom:7px;">NOTICE</h2>
-                <div class="xans-element- xans-board xans-board-listpackage-1 xans-board-listpackage xans-board-1 ">
-                    <div class="xans-element- xans-board xans-board-list-1 xans-board-list xans-board-1 f_board_list">
+                <div>
+                    <c:forEach var="n" items="${sessionScope.Notice}" begin="0" end="4">
                     <ul>
-                        <li class="title xans-record-">
-                            <a href="/board/free/read.html?no=18779&board_no=1">2019년 1차 회원등급 변경 안내 </a> <!--2019/01/31-->
-                        </li>
-                        <li class="title xans-record-">
-                            <a href="/board/free/read.html?no=18778&board_no=1">2019년 설 연휴 배송 및 휴무 안내 </a> <!--2019/01/30-->
-                        </li>
-                        <li class="title xans-record-">
-                            <a href="/board/free/read.html?no=18477&board_no=1">2018년 10월 압구지엔 링거앰플 사전예약 배송지연 </a> <!--2018/10/24-->
-                        </li>
-                        <li class="title xans-record-">
-                            <a href="/board/free/read.html?no=18409&board_no=1">2018년 추석 연휴 배송 및 휴무 안내 </a> <!--2018/09/12-->
-                        </li>
-                        <li class="title xans-record-">
-                            <a href="/board/free/read.html?no=18230&board_no=1">2018년 2차 회원등급 변경 안내</a> <!--2018/07/10-->
+                        <li>
+                            <a href="/notice/detail?bno=${n.bno}">${n.title} </a> <!--2019/01/31-->
                         </li>
                     </ul>
-                </div>
+                    </c:forEach>
                 </div>
             </li>
         </ul>

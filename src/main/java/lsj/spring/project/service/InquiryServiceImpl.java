@@ -1,29 +1,29 @@
 package lsj.spring.project.service;
 
-import lsj.spring.project.dao.NoticeDAO;
+import lsj.spring.project.dao.InquiryDAO;
 import lsj.spring.project.utils.ImgUploadUtil;
-import lsj.spring.project.vo.Notice;
+import lsj.spring.project.vo.Inquiry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.*;
 
-@Service("nsrv")
-public class NoticeServiceImpl implements NoticeService{
+@Service("isrv")
+public class InquiryServiceImpl implements InquiryService{
 
-    @Autowired private NoticeDAO ndao;
+    @Autowired private InquiryDAO idao;
     @Autowired private ImgUploadUtil imgutil;
 
-    // private String uploadPath = "C:\\Users\\USER\\IdeaProjects\\the3.0-dermatology-hospital-website\\src\\main\\webapp\\resources\\images\\downloadedImages\\";
+    //private String uploadPath = "C:\\Users\\USER\\IdeaProjects\\the3.0-dermatology-hospital-website\\src\\main\\webapp\\resources\\images\\downloadedImages\\";
     private String uploadPath = "\\home\\ec2-user\\downloadedImages\\";
-    private String dir = "notice\\";
+    private String dir = "inquiry\\";
+
 
     @Override
-    public boolean newNotice(Notice n, MultipartFile[] img) {
-        String uuid = imgutil.makeUUID();
+    public boolean newInquiry(Inquiry iq, MultipartFile[] img) {
+        String uuid = imgutil.makeUUID(); // 식별코드 생성
         boolean isSubmitted = false;
 
         if(imgutil.checkFiles(img)){
@@ -43,15 +43,15 @@ public class NoticeServiceImpl implements NoticeService{
                 fnames += imgs.get(i).split("[/]")[0] + "/";
             }
 
-            n.setFnames( fnames );
-            n.setUuid( uuid );
+            iq.setFnames( fnames );
+            iq.setUuid( uuid );
         }
         else{
-            n.setFnames( "-/-/-/");
-            n.setUuid( uuid );
+            iq.setFnames( "-/-/-/");
+            iq.setUuid( uuid );
         }
 
-        if(ndao.insertNotice(n)>0){
+        if(idao.insertInquiry(iq)>0){
             isSubmitted = true;
         }
 
@@ -59,66 +59,83 @@ public class NoticeServiceImpl implements NoticeService{
     }
 
     @Override
-    public List<Notice> readNotice(String cp) {
+    public List<Inquiry> readInquiry(String cp) {
         int snum = 10 * (Integer.parseInt(cp) - 1);
-        return ndao.selectNotice(snum);
+        return idao.selectInquiry(snum);
     }
 
     @Override
-    public List<Notice> readNotice(String cp, String ftype, String fkey) {
+    public List<Inquiry> readInquiry(String cp, String bno) {
+        int snum = 10 * (Integer.parseInt(cp) - 1);
+        return idao.selectInquiry(snum, bno);
+    }
+
+    @Override
+    public List<Inquiry> readInquiry(String cp, String ftype, String fkey) {
         int snum = 10 * (Integer.parseInt(cp) - 1);
 
         Map<String, Object> params = new HashMap<>();
         params.put("snum", snum);
         params.put("ftype", ftype);
         params.put("fkey", fkey);
-        return ndao.findSelectNotice(params);
+        return idao.findSelectInquiry(params);
     }
 
     @Override
-    public List<Notice> readAllNotice() {
-        return ndao.selectAllNotice();
+    public List<Inquiry> readAllInquiry() {
+        return idao.selectAllInquiry();
     }
 
     @Override
-    public Notice readOneNotice(String bno) {
-        return ndao.selectOneNotice(bno);
+    public Inquiry readOneInquiry(String bno) {
+        return idao.selectOneInquiry(bno);
     }
 
     @Override
-    public int countNotice() {
-        return ndao.selectCountNotice();
+    public int countInquiry() {
+        return idao.selectCountInquiry();
     }
 
     @Override
-    public int countNotice(String ftype, String fkey) {
+    public int countInquiry(String uid) {
+        return idao.selectCountInquiryByUid(uid);
+    }
+
+    @Override
+    public int countInquiry(String ftype, String fkey) {
         Map<String, Object> params = new HashMap<>();
         params.put("ftype", ftype);
         params.put("fkey", fkey);
 
-        return ndao.selectCountNotice(params);
+        return idao.selectCountInquiry(params);
     }
 
     @Override
-    public boolean viewCountNotice(String bno) {
+    public int checkSecretInquiry(String bno, String pwd){
+        return idao.checkSecretInquiry(bno, pwd);
+    }
+
+    @Override
+    public boolean viewCountInquiry(String bno) {
         boolean isUpdated = false;
-        if (ndao.viewCountNotice(bno) > 0) isUpdated = true;
+        if (idao.viewCountInquiry(bno) > 0) isUpdated = true;
 
         return isUpdated;
     }
 
     @Override
-    public void modifyNotice(Notice n, String bno, MultipartFile[] img) {
+    public void modifyInquiry(Inquiry iq, String bno, MultipartFile[] img) {
+
         List<String> imgs = new ArrayList<>();
 
         for(MultipartFile f : img) {
             if (!f.getOriginalFilename().isEmpty())
-                imgs.add(imgutil.ImageUpload(f, n.getUuid(),dir));
+                imgs.add(imgutil.ImageUpload(f, iq.getUuid(),dir));
             else
                 imgs.add("-/-");
         }
 
-        String fn = ndao.readFnames(bno);
+        String fn = idao.readFnames(bno);
 
         String[] ofn = fn.split("[/]");
 
@@ -133,36 +150,36 @@ public class NoticeServiceImpl implements NoticeService{
         String todie[] = new String[3];
 
 
-        System.out.println(n.getTodie());
-        for(int i=0; i < n.getTodie().length(); ++i){
-            int pos = Integer.parseInt(n.getTodie().substring(i, i+1));
+        for(int i=0; i < iq.getTodie().length(); ++i){
+            int pos = Integer.parseInt(iq.getTodie().substring(i, i+1));
             ofn[pos-1] = nfn[i];
             todie[i] = fn.split("[/]")[pos-1];
         }
 
         fnames = String.join("/", ofn);
 
-        n.setFnames( fnames );
+        iq.setFnames( fnames );
 
         for (int i=0; i < todie.length; ++i){
             try {
                 int pos = todie[i].lastIndexOf(".");
                 String name = todie[i].substring(0, pos);
                 String ext = todie[i].substring(pos + 1);
-                String one = name + n.getUuid() + "." + ext;
+                String one = name + iq.getUuid() + "." + ext;
                 File f = new File(uploadPath + dir + one);
                 f.delete();
             }catch (Exception e){}
 
         }
 
-        ndao.modifyNotice(n);
+        idao.modifyInquiry(iq);
     }
 
     @Override
-    public void deleteNotice(String bno) {
-        String fn = ndao.readFnames(bno);
-        String uuid = ndao.readUuid(bno);
+    public void deleteInquiry(String bno) {
+
+        String fn = idao.readFnames(bno);
+        String uuid = idao.readUuid(bno);
 
         if(fn!=null) {
             String[] ofn = fn.split("[/]");
@@ -181,6 +198,16 @@ public class NoticeServiceImpl implements NoticeService{
 
             }
         }
-        ndao.deleteNotice(bno);
+        idao.deleteInquiry(bno);
+    }
+
+    @Override
+    public void updateComment(int bno, int countComment) {
+        idao.updateComment(bno, countComment);
+    }
+
+    @Override
+    public void updateStatus(String bno) {
+        idao.updateStatus(bno);
     }
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="event">
+
+    <insert id="insertEvent" statementType="PREPARED" parameterType="lsj.spring.project.vo.Event">
+        insert into the3.the3_event (title, content, sdate, edate, fnames, uuid)
+        values (#{title}, #{content}, #{sdate}, #{edate}, #{fnames}, #{uuid})
+    </insert>
+
+    <select id="selectEvent" statementType="PREPARED" parameterType="int" resultType="lsj.spring.project.vo.Event">
+        select * from the3.the3_event order by bno desc limit #{snum}, 4
+    </select>
+
+    <select id="selectEventAll" statementType="PREPARED" resultType="lsj.spring.project.vo.Event">
+        select * from the3.the3_event order by bno desc
+    </select>
+
+    <select id="findSelect" statementType="PREPARED" parameterType="map" resultType="lsj.spring.project.vo.Event">
+        select * from the3.the3_event
+        <if test="ftype != 'titcont'">
+            where ${ftype} like concat('%',#{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            where title like concat('%',#{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+        order by bno desc limit #{snum}, 4
+    </select>
+
+    <select id="selectOne" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.Event">
+        select * from the3.the3_event where bno = #{bno}
+    </select>
+
+    <select id="countEvent" statementType="PREPARED" resultType="int">
+        select count(bno) cnt from the3.the3_event
+    </select>
+
+    <select id="findSelectCount" statementType="PREPARED" parameterType="map" resultType="int">
+        select count(bno) cnt from the3.the3_event
+        <if test="ftype != 'titcont'">
+            where ${ftype} like concat('%', #{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            where title like concat('%', #{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+    </select>
+
+    <update id="viewEvent" statementType="PREPARED" parameterType="String">
+        update the3.the3_event set views = views + 1 where bno = #{bno}
+    </update>
+    
+    <update id="modifyEvent" statementType="PREPARED" parameterType="lsj.spring.project.vo.Event">
+        update the3.the3_event set title = #{title}, content = #{content}, uuid = #{uuid}, sdate = #{sdate}, edate = #{edate}
+        <if test="todie != ''">
+            , fnames = #{fnames}
+        </if>
+        where bno = #{bno}
+    </update>
+
+    <delete id="deleteEvent" statementType="PREPARED"
+            parameterType="int">
+        delete from the3.the3_event
+        where bno = #{bno}
+    </delete>
+
+    <select id="readFnames" statementType="PREPARED"
+            parameterType="String"
+            resultType="String">
+        select fnames from the3.the3_event where bno = #{bno}
+    </select>
+
+    <select id="readUuid" statementType="PREPARED"
+            parameterType="String"
+            resultType="String">
+        select uuid from the3.the3_event where bno = #{bno}
+    </select>
+
+</mapper>

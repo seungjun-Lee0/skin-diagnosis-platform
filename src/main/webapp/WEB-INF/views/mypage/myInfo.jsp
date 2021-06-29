@@ -6,16 +6,23 @@
 <%
     String strReferer = request.getHeader("referer");
 
-    if(strReferer == null || session.getAttribute("MyInfo") == null){
+    if(strReferer == null){
 %>
 <script language="javascript">
     alert("정상적인 경로를 통해 다시 접근해 주세요.");
-    document.location.href="/";
+    document.location.href="/mypage/myInfo";
 </script>
 <%
         return;
     }
 %>
+
+<c:if test="${sessionScope.MyInfo eq null}">
+    <script language="javascript">
+        alert("로그인이 필요한 기능입니다.");
+        document.location.href="/";
+    </script>
+</c:if>
 
 <div id="contents">
 
@@ -26,8 +33,8 @@
 
     <div>
         <h2  style="text-align: center">
-            <span></span>
-            ${sessionScope.MyInfo.uname}님 환영합니다.
+            <span><c:if test="${sessionScope.MyInfo.uid eq 'admin'}">관리자</c:if>
+                <c:if test="${sessionScope.MyInfo.uid ne 'admin'}">${sessionScope.MyInfo.uname}</c:if> 님 환영합니다.</span>
         </h2>
     </div>
 
@@ -35,17 +42,22 @@
         <div class="pageMain">
             <a href="/mypage/myInfo" class="pageMain_box mypageBtnActive">
                 <h3>회원 정보</h3>
-                <p>회원이신 고객님의 개인정보를 관리하는 공간입니다.</p>
+                <p>고객님의 개인정보를 관리하는 공간입니다.</p>
             </a>
         </div>
         <div class="pageMain">
-            <a href="/mypage/myDiagnosis" class="pageMain_box">
-                <h3>진단결과 조회</h3>
-                <p>피부진단 결과를 조회하실 수 있습니다.</p>
+            <a href="/mypage/myDiagnosis?cp=1" class="pageMain_box">
+                <h3>
+                    <c:if test="${sessionScope.MyInfo.uid eq 'admin'}">신청된 검사 목록</c:if>
+                    <c:if test="${sessionScope.MyInfo.uid ne 'admin'}">진단결과 조회</c:if>
+                </h3>
+                <p>
+                    <c:if test="${sessionScope.MyInfo.uid eq 'admin'}">신청된 검사 목록을 조회하고 결과를<br>작성하실 수 있습니다.</c:if>
+                    <c:if test="${sessionScope.MyInfo.uid ne 'admin'}">피부진단 결과를 조회하실 수 있습니다.</c:if></p>
             </a>
         </div>
         <div class="pageMain">
-            <a href="/mypage/myInquiry" class="pageMain_box">
+            <a href="/mypage/myInquiry?cp=1&uid=${sessionScope.MyInfo.uid}" class="pageMain_box">
                 <h3>문의내역 조회</h3>
                 <p>문의하신 내역과 답변을 확인하실 수 있습니다.</p>
             </a>

@@ -45,7 +45,7 @@ public class MemberController {
         return "redirect:/member/regCompleted";
     }
 
-    // 아이디 중복검사
+    // id duplicate check
     @ResponseBody
     @GetMapping("/member/checkuid")
     public void checkuid(String uid, HttpServletResponse res) {
@@ -56,7 +56,7 @@ public class MemberController {
         }
     }
 
-    // 이메일 중복검사
+    // email duplicate check
     @ResponseBody
     @GetMapping("/member/checkemail")
     public void checkueamil(String email1, String email2, HttpServletResponse res) {
@@ -80,7 +80,7 @@ public class MemberController {
         else{
             ra.addFlashAttribute("msg", "아이디 또는 비밀번호가 일치하지 않습니다!!");
             ra.addFlashAttribute("url","/member/login");
-            return "redirect:/fail"; // alert 후, 전달된 url 파라미터로 이동시키는 페이지
+            return "redirect:/fail";
         }
         return returnPage;
     }
@@ -88,14 +88,12 @@ public class MemberController {
     @GetMapping("/fail")
     public String fail() { return "member/fail.tiles"; }
 
-    // 로그아웃
     @GetMapping("/member/logout")
     public String logout(HttpSession sess) {
         sess.invalidate();
         return "redirect:/";
     }
 
-    // 아이디 찾기
     @GetMapping("/member/findid")
     public String findid(){
         return "member/findid.tiles";
@@ -127,7 +125,6 @@ public class MemberController {
         return returnPage;
     }
 
-    // 비밀번호 찾기
     @GetMapping("/member/findpwd")
     public String findpwd(){
         return "member/findpwd.tiles";
@@ -161,7 +158,7 @@ public class MemberController {
                 messageHelper.setText(
                         "<div style=\"font-size:20px\"><span style=\"color:#7e69fe\">" + uname + "</span> 고객님의 비밀번호가"
                                 + "<span style=\"color:#7e69fe\">'" + mbsrv.updateUserpwd(m) +
-                                "'</span>으로 바뀌었음을 알려드립니다. 저희 웹사이트에 방문하셔서 암호를 재설정 해주시길 바랍니다.</div>", true);
+                                "'</span>으로 바뀌었음을 알려드립니다. 웹사이트에 방문하셔서 암호를 재설정 해주시길 바랍니다.</div>", true);
 
                 mailSender.send(message);
             } catch (Exception e){

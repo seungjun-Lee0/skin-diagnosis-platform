@@ -3,28 +3,47 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<fmt:parseNumber var="cp" value="${param.cp}" />
+<fmt:parseNumber var="sp" value="${(cp - 1) / 5}" integerOnly="true" />
+<fmt:parseNumber var="sp" value="${sp * 5 + 1}" />
+<fmt:parseNumber var="ep" value="${sp + 4}" />
+
+<%-- 총 게시물수를 페이지 당 게시물 수로 나눔 : 총 페이지수 --%>
+<fmt:parseNumber var="tp" value="${ncnt / 10}" integerOnly="true" />
+<c:if test="${ncnt % 10 gt 0}">
+    <fmt:parseNumber var="tp" value="${tp + 1}" />
+</c:if>
+
+<%-- 글번호 --%>
+<fmt:parseNumber var="snum" value="${ncnt - (cp-1) * 10}" />
+
+<%-- 페이지링크 : 검색기능 x --%>
+<c:set var="pglink" value="/notice/list?cp=" />
+
+<%-- 페이지링크 : 검색기능 o --%>
+<c:if test="${not empty param.findkey}">
+    <c:set var="pglink" value="/notice/find?findtype=${param.findtype}&findkey=${param.findkey}&cp=" />
+</c:if>
+
 <div id="contents">
 
         <div class="titleArea">
-            <h2>NOTICE</h2>
+            <h2><a href="/notice/list?cp=1">NOTICE</a></h2>
             <p>더삼점영 피부과 공지사항 페이지입니다.</p>
         </div>
         <div class="title-right">
             <div class="search-bar">
-                <form name="nseacrh" method="get" role="form">
-                    <input type="hidden" name="bo_table" value="notice">
-                    <input type="hidden" name="sca" value="">
-                    <input type="hidden" name="sop" value="and">
-                    <select name="findtype3" id="findtype3">
-                        <option value="title">제목</option>
-                        <option value="contents">내용</option>
-                        <option value="titcont">제목+내용</option>
-                    </select>
-                    <input type="text" name="findkey" value="" required id="findkey" maxlength="20" placeholder="검색어를 입력해 주세요">
-                    <button type="button" class="submit" id="findbtn">
-                        <img src="/images/paging/search.png" />
-                    </button>
-                </form>
+                <input type="text" hidden/>
+                <select name="findtype" id="findtype">
+                    <option value="title">제목</option>
+                    <option value="contents">내용</option>
+                    <option value="titcont">제목+내용</option>
+                </select>
+                <input type="text" name="findkey" value="" required id="findkey" maxlength="20" placeholder="검색어를 입력해 주세요"
+                       onkeyup="if(window.event.keyCode==13){ nsearchbar() }"/>
+                <button type="button" class="submit" id="nfindbtn">
+                    <img src="/images/paging/search.png" />
+                </button>
             </div>
         </div>
 
@@ -46,50 +65,90 @@
                     <th scope="col" class="">조회</th>
                 </tr></thead>
                 <tbody class="center">
-                <tr style="background:#fcfcfc; color:#555555;">
-                    <td> 공지</td>
-                    <td class="left txtBreak">
-                        <strong> <a href="/notice/detail" style="color:#555555;">[닥터웰메이드원 신규&구매고객 혜택 안내]</a> <span class="txtEm"></span></strong>
-                    </td>
-                    <td>닥터웰메이드원 공식몰</td>
-                    <td class=""><span class="txtNum">2019-01-30</span></td>
-                    <td class=""><span class="txtNum">616</span></td>
-                </tr>
+                <c:set var="trucnt" value="0"/>
+                <c:forEach var="n" items="${nsall}">
+                    <c:if test="${n.fixed eq 'true'}">
+                        <tr style="background:#fcfcfc; color:#555555;">
+                            <td>공지</td>
+                            <td class="left txtBreak">
+                                <strong>
+                                    <a href="/notice/detail?bno=${n.bno}" style="color:#555555;">${n.title}</a>
+                                </strong>
+                            </td>
+                            <td>${n.uid}</td>
+                            <td><span class="txtNum">${fn:substring(n.regdate, 0, 10)}</span></td>
+                            <td><span class="txtNum">${n.views}</span></td>
+                        </tr>
+                        <c:set var="trucnt" value="${trucnt+1}"/>
+                    </c:if>
+                </c:forEach>
                 </tbody>
                 <tbody class="center">
-                <tr style="background-color:#FFFFFF; color:#555555;">
-                    <td> 57</td>
-                    <td class="left txtBreak">
-                        <a href="/notice/detail" style="color:#555555;">2019년 1차 회원등급 변경 안내 </a> <span class="txtEm"></span>
-                    </td>
-                    <td>닥터웰메이드원 공식몰</td>
-                    <td class=""><span class="txtNum">2019-01-31</span></td>
-                    <td class=""><span class="txtNum">2501</span></td>
-                </tr>
+                <c:forEach var="n" items="${ns}">
+                        <tr style="background-color:#FFFFFF; color:#555555;">
+                            <td>
+                                <c:if test="${find eq null}">${snum - trucnt}</c:if>
+                                <c:if test="${find ne null}">${snum}</c:if>
+                            </td>
+                            <td class="left txtBreak">
+                                <a href="/notice/detail?bno=${n.bno}" style="color:#555555;">${n.title}</a>
+                                <span class="txtEm"></span>
+                            </td>
+                            <td>${n.uid}</td>
+                            <td><span class="txtNum">${fn:substring(n.regdate, 0, 10)}</span></td>
+                            <td><span class="txtNum">${n.views}</span></td>
+                            <c:set var="snum" value="${snum-1}" />
+                        </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
 
     <div class="button_pos">
         <div class="btnArea M b_right">
-            <a href="/notice/write" class="black_s">작성하기</a>
+            <c:if test="${sessionScope.MyInfo.uid eq 'admin'}">
+                <a href="/notice/write" class="black_s">작성하기</a>
+            </c:if>
         </div>
     </div>
 
 
     <div class="the3-base-paginate">
-        <a href="?board_no=1&page=1">
-            <img src="/images/paging/paging_left_arrow01.png" alt="이전 페이지"/>
-        </a>
+        <c:if test="${cp ge sp and sp-1 gt 0}">
+            <a href="${pglink}${sp-1}">
+                <img src="/images/paging/paging_left_arrow01.png" alt="이전 페이지">
+            </a>
+        </c:if>
+        <c:if test="${sp-1 le 0}">
+            <a href="${pglink}${sp}">
+                <img src="/images/paging/paging_left_arrow01.png" alt="이전 페이지">
+            </a>
+        </c:if>
+
         <ol>
-            <li class="xans-record-"><a href="?board_no=1&page=1" class="this">1</a></li>
-            <li class="xans-record-"><a href="?board_no=1&page=2">2</a></li>
-            <li class="xans-record-"><a href="?board_no=1&page=3">3</a></li>
-            <li class="xans-record-"><a href="?board_no=1&page=4">4</a></li>
+            <c:forEach var="i" begin="${sp}" end="${ep}" step="1">
+                <%-- 표시하는 페이지i가 총 페이지 수보다 작거나 같을 동안만 출력 --%>
+                <c:if test="${i le tp}">
+                    <c:if test="${i eq cp}">
+                        <li><a class="this" href="${pglink}${i}">${i}</a></li>
+                    </c:if>
+                    <c:if test="${i ne cp}">
+                        <li><a href="${pglink}${i}">${i}</a></li>
+                    </c:if>
+                </c:if>
+            </c:forEach>
         </ol>
-        <a href="?board_no=1&page=2">
-            <img src="/images/paging/paging_right_arrow01.png" alt="다음 페이지"/>
-        </a>
+
+        <c:if test="${cp+1 le tp and ep le tp}">
+            <a href="${pglink}${ep+1}">
+                <img src="/images/paging/paging_right_arrow01.png" alt="다음 페이지"/>
+            </a>
+        </c:if>
+        <c:if test="${cp+1 ge tp or ep ge tp}">
+            <a href="${pglink}${tp}">
+                <img src="/images/paging/paging_right_arrow01.png" alt="다음 페이지"/>
+            </a>
+        </c:if>
     </div>
 
 </div>

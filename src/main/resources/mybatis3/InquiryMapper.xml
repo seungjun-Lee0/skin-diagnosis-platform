@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="inquiry">
+
+    <insert id="insertInquiry" statementType="PREPARED" parameterType="lsj.spring.project.vo.Inquiry">
+        insert into the3.the3_inquiry (uid, pwd, title, content, fixed, secret, fnames, uuid)
+        values (#{uid}, #{pwd}, #{title}, #{content}, #{fixed}, #{secret}, #{fnames}, #{uuid})
+    </insert>
+
+    <select id="selectInquiry" statementType="PREPARED" parameterType="int" resultType="lsj.spring.project.vo.Inquiry">
+        select * from the3.the3_inquiry where fixed = 'false' order by bno desc limit #{snum}, 10
+    </select>
+
+    <select id="selectInquiryByUid" statementType="PREPARED" parameterType="map" resultType="lsj.spring.project.vo.Inquiry">
+        select * from the3.the3_inquiry where uid = #{uid} order by bno desc limit #{snum}, 10
+    </select>
+
+    <select id="selectInquiryAll" statementType="PREPARED" resultType="lsj.spring.project.vo.Inquiry">
+        select * from the3.the3_inquiry order by bno desc
+    </select>
+
+    <select id="findSelect" statementType="PREPARED" parameterType="map" resultType="lsj.spring.project.vo.Inquiry">
+        select * from the3.the3_inquiry where fixed = 'false'
+        <if test="ftype != 'titcont'">
+            and ${ftype} like concat('%',#{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            and title like concat('%',#{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+        order by bno desc limit #{snum}, 10
+    </select>
+
+    <select id="selectOne" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.Inquiry">
+        select * from the3.the3_inquiry where bno = #{bno}
+    </select>
+
+    <select id="checkPwd" statementType="PREPARED" parameterType="map" resultType="int">
+        select count(bno) from the3.the3_inquiry where bno = #{bno} and pwd = #{pwd}
+    </select>
+
+    <select id="countInquiry" statementType="PREPARED" resultType="int">
+        select count(bno) cnt from the3.the3_inquiry
+    </select>
+
+    <select id="countInquiryByUid" statementType="PREPARED" parameterType="String" resultType="int">
+        select count(bno) cnt from the3.the3_inquiry where uid = #{uid}
+    </select>
+
+    <select id="findSelectCount" statementType="PREPARED" parameterType="map" resultType="int">
+        select count(bno) cnt from the3.the3_inquiry where fixed = 'false'
+        <if test="ftype != 'titcont'">
+            and ${ftype} like concat('%', #{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            and title like concat('%', #{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+    </select>
+
+    <update id="viewInquiry" statementType="PREPARED" parameterType="String">
+        update the3.the3_inquiry set views = views + 1 where bno = #{bno}
+    </update>
+
+    <update id="updateComment" statementType="PREPARED" parameterType="map">
+        update the3.the3_inquiry set comment = #{comment} where bno = #{bno}
+    </update>
+
+    <update id="updateStatus" statementType="PREPARED" parameterType="String">
+        update the3.the3_inquiry set status = 'true' where bno = #{bno}
+    </update>
+    
+    <update id="modifyInquiry" statementType="PREPARED" parameterType="lsj.spring.project.vo.Inquiry">
+        update the3.the3_inquiry set pwd = #{pwd}, title = #{title}, content = #{content}, fixed = #{fixed}, uuid = #{uuid}, secret = #{secret}
+        <if test="todie != ''">
+            , fnames = #{fnames}
+        </if>
+        where bno = #{bno};
+    </update>
+
+    <delete id="deleteInquiry" statementType="PREPARED"
+            parameterType="int">
+        delete from i, ir
+        using the3.the3_inquiry i left join the3.the3_inquiryReply ir
+        on i.bno = ir.bno where i.bno = #{bno}
+    </delete>
+
+    <select id="readFnames" statementType="PREPARED"
+            parameterType="String"
+            resultType="String">
+        select fnames from the3.the3_inquiry where bno = #{bno}
+    </select>
+
+    <select id="readUuid" statementType="PREPARED"
+            parameterType="String"
+            resultType="String">
+        select uuid from the3.the3_inquiry where bno = #{bno}
+    </select>
+
+</mapper>

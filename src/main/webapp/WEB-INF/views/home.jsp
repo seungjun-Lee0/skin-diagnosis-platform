@@ -228,7 +228,7 @@
                                     </div>
 
                                     <div>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.376217588935!2d127.02539161566257!3d37.522627879806244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3925a331061%3A0x8a2f73adc7af1151!2z642UMy4w7ZS867aA6rO8L-2ZlOyepe2SiA!5e0!3m2!1sen!2skr!4v1643265454000!5m2!1sen!2skr" width="1330" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.376217588935!2d127.02539161566257!3d37.522627879806244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3925a331061%3A0x8a2f73adc7af1151!2z642UMy4w7ZS867aA6rO8L-2ZlOyepe2SiA!5e0!3m2!1sen!2skr!4v1643265454000!5m2!1sen!2skr" width="96.5%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
 
                                     <div class="loc_info">
@@ -341,9 +341,8 @@
 
                     <div class="text_con">
 							<span>
-								더삼점영<br>공식몰
+								공식몰
 							</span>
-
                     </div>
                 </div>
             </a>

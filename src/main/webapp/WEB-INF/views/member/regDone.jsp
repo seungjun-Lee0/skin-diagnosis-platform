@@ -26,7 +26,7 @@
     <div class="join_btn btn">
       <div class="row">
         <div class="col-lg-6">
-          <a href="/home" class="btn-type-02">메인으로 이동</a>
+          <a href="/" class="btn-type-02">메인으로 이동</a>
         </div>
         <div class="col-lg-6">
           <a href="/member/login" class="btn-type-01">로그인 하기</a>
