@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="diagnosis">
+
+    <insert id="insertDiagnosis1" statementType="PREPARED" parameterType="lsj.spring.project.vo.Diagnosis">
+        insert into the3.the3_diagnosis (uid, uemail, uname, c1, c2, c3, c4, c5, c6, fnames)
+        values (#{uid}, #{uemail}, #{uname}, #{c1}, #{c2}, #{c3}, #{c4}, #{c5}, #{c6}, '')
+    </insert>
+
+    <select id="selectOneDno" statementType="PREPARED" parameterType="map" resultType="String">
+        select dno from the3.the3_diagnosis where uid = #{uid} order by regdate desc limit 1;
+    </select>
+
+    <update id="insertDiagnosis2" statementType="PREPARED" parameterType="lsj.spring.project.vo.Diagnosis">
+        update the3.the3_diagnosis set s1 = #{s1}, s2 = #{s2}, s3 = #{s3}, s4 = #{s4}, s5 = #{s5},
+                                       s6 = #{s6}, s7 = #{s7}, s8 = #{s8}, s9 = #{s9}, s10 = #{s10},
+                                       s11 = #{s11}, s12 = #{s12}, fnames = #{fnames}, uuid = #{uuid}, regdate = current_timestamp
+        where dno = #{dno}
+    </update>
+
+    <select id="selectDiagnosis" statementType="PREPARED" parameterType="int" resultType="lsj.spring.project.vo.Diagnosis">
+        select dno, uid, uemail, uname, regdate, status from the3.the3_diagnosis order by dno desc limit #{snum}, 10
+    </select>
+
+    <select id="selectOne" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.Diagnosis">
+        select * from the3.the3_diagnosis where dno = #{dno}
+    </select>
+
+    <select id="findSelect" statementType="PREPARED" parameterType="map" resultType="lsj.spring.project.vo.Diagnosis">
+        select * from the3.the3_diagnosis
+        <if test="ftype != 'titcont'">
+            where ${ftype} like concat('%',#{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            where title like concat('%',#{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+        order by bno desc limit #{snum}, 10
+    </select>
+
+    <select id="countDiagnosis" statementType="PREPARED" resultType="int">
+        select count(dno) cnt from the3.the3_diagnosis
+    </select>
+
+    <select id="findSelectCount" statementType="PREPARED" parameterType="map" resultType="int">
+        select count(dno) cnt from the3.the3_diagnosis
+        <if test="ftype != 'titcont'">
+            where ${ftype} like concat('%', #{fkey}, '%')
+        </if>
+        <if test="ftype == 'titcont'">
+            where title like concat('%', #{fkey}, '%') or content like concat(#{fkey}, '%')
+        </if>
+    </select>
+
+    <insert id="insertAcneScore" statementType="PREPARED" parameterType="lsj.spring.project.vo.Acne">
+        insert into the3.the3_acne (fname, avg, fh, lc, rc, nose, chin)
+        values (#{fname}, #{avg}, #{fh}, #{lc}, #{rc}, #{nose}, #{chin})
+    </insert>
+
+    <select id="selectAcneResult" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.Acne">
+        select * from the3.the3_acne where fname like concat(#{dno}, '-front%') order by ano desc limit 1;
+    </select>
+</mapper>
