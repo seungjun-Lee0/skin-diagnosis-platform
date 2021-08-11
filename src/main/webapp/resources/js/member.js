@@ -32,7 +32,7 @@ $('#uemail3').on('change', function () {
     }
 });
 
-$('#uid').on('blur', function () { checkuserid() });
+$('#uid').on('blur', function () { checkuserid(); });
 
 // 데이터베이스에서 아이디 중복체크
 function checkuserid() {
@@ -222,8 +222,7 @@ $('#modify_submit').on('click', function() {
 });
 
 // 로그인
-$('#loginbtn').on('click', function() {
-
+function login() {
     if ($('#uid').val() == '') alert('아이디를 입력하세요')
     else if ($('#upwd').val() == '') alert('비밀번호를 입력하세요')
     else {
@@ -231,7 +230,9 @@ $('#loginbtn').on('click', function() {
         frm.attr('method', 'POST');
         frm.attr('action', '/member/login');
         frm.submit(); }
-});
+}
+
+$('#loginbtn').on('click', function() { login(); });
 
 // 회원 탈퇴
 $('#quit_btn').on('click', function() {
@@ -258,7 +259,8 @@ $('#cancelbtn').on('click', function() {
 });
 
 // 아이디 찾기
-$('#fidbtn').on('click', function() {
+
+function findid() {
     if ($('#uname').val() == '') {
         alert('이름을 입력해주세요');
     }
@@ -271,10 +273,11 @@ $('#fidbtn').on('click', function() {
         frm.attr('action', '/member/findidok');
         frm.submit();
     }
-});
+}
+$('#fidbtn').on('click', function() { findid(); });
 
 // 비밀번호 찾기
-$('#fpwdbtn').on('click', function() {
+function findpwd(){
     if ($('#uid').val() == '') {
         alert('아이디를 입력해주세요');
     }
@@ -287,4 +290,5 @@ $('#fpwdbtn').on('click', function() {
         frm.attr('action', '/member/findpwdok');
         frm.submit();
     }
-});
+}
+$('#fpwdbtn').on('click', function() { findpwd(); });
