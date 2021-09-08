@@ -25,7 +25,8 @@
     <c:set var="pglink" value="/event/find?findtype=${param.findtype}&findkey=${param.findkey}&cp=" />
 </c:if>
 
-<c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/event/" />
+<%--<c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/event/" /> --%>
+<c:set var="baseURL" value="/home/ec2-user/downloadedImages/event/" />
 
 <div id="contents">
 
