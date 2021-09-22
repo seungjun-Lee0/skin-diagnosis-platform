@@ -4,8 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
 
-<%-- <c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/notice/" /> --%>
-<c:set var="baseURL" value="/home/ec2-user/downloadedImages/notice/" />
+<c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/notice/" />
 <c:set var="fnames" value="${fn:split(nts.fnames,'/')}"/>
 
 <c:if test="${nts.title eq null}">

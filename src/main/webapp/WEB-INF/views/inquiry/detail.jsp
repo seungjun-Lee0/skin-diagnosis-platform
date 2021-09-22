@@ -17,8 +17,7 @@
   }
 %>
 
-<%--<c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/inquiry/" /> --%>
-<c:set var="baseURL" value="/home/ec2-user/downloadedImages/inquiry/" />
+<c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/inquiry/" />
 <c:set var="fnames" value="${fn:split(its.fnames,'/')}"/>
 
 <div id="contents" style="margin-top: 150px; margin-bottom: 150px;">

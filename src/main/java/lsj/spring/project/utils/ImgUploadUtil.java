@@ -18,9 +18,9 @@ import java.util.Date;
 public class ImgUploadUtil {
 
     //private String uploadPath = "C:\\Users\\USER\\IdeaProjects\\the3.0-dermatology-hospital-website\\src\\main\\webapp\\resources\\images\\downloadedImages\\";
-    private String uploadPath = "\\home\\ec2-user\\downloadedImages\\";
+    private String uploadPath = "/home/ec2-user/apache-tomcat-8.5.75/webapps/SemiProjectV3-1.0-SNAPSHOT/resources/images/downloadedImages/";
     //private String uploadPath2 = "C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\test\\";
-    private String uploadPath2 = "\\home\\ec2-user\\acne_detect\\dist\\acne_detect\\test\\";
+    private String uploadPath2 = "/home/ec2-user/acne_detect/dist/acne_detect/test/";
 
     public boolean checkFiles(MultipartFile[] img) {
         boolean isFiles = false;
@@ -54,7 +54,8 @@ public class ImgUploadUtil {
 
         int pos = ofname.lastIndexOf(".");
         String nfame = uuid + "." + ofname.substring(pos+1);
-        File file = new File(uploadPath + "diagnosis\\" + nfame);
+        //File file = new File(uploadPath + "diagnosis\\" + nfame);
+        File file = new File(uploadPath + "diagnosis/" + nfame);
         File nfile = new File(uploadPath2 + nfame);
         try {
             f.transferTo(file);

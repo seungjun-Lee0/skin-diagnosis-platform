@@ -19,8 +19,8 @@ public class EventServiceImpl implements EventService{
     @Autowired private ImgUploadUtil imgutil;
 
     //private String uploadPath = "C:\\Users\\USER\\IdeaProjects\\the3.0-dermatology-hospital-website\\src\\main\\webapp\\resources\\images\\downloadedImages\\";
-    private String uploadPath = "\\home\\ec2-user\\downloadedImages\\";
-    private String dir = "event\\";
+    private String uploadPath = "/home/ec2-user/apache-tomcat-8.5.75/webapps/SemiProjectV3-1.0-SNAPSHOT/resources/images/downloadedImages/";
+    private String dir = "event/";
     private String[] imgType = {"_thumb_", "_main_"};
 
     @Override

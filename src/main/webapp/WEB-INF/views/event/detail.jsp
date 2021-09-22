@@ -5,8 +5,7 @@
 <% pageContext.setAttribute("replaceChar", "\n"); %>
 
 
-<%--<c:set var="baseURL" value="/home/ec2-user/downloadedImages/images/downloadedImages/event/" /> --%>
-<c:set var="baseURL" value="/home/ec2-user/downloadedImages/event/" />
+<c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/event/" />
 <c:set var="fnames" value="${fn:split(ets.fnames,'/')}"/>
 
 <c:if test="${ets.title eq null}">

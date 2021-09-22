@@ -19,11 +19,11 @@ public class DiagnosisController {
 
     @Autowired private DiagnosisService dgsrv;
     //File rawImagePath = new File("C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\test");
-    File rawImagePath = new File("\\home\\ec2-user\\acne_detect\\dist\\acne_detect\\test");
+    File rawImagePath = new File("/home/ec2-user/acne_detect/dist/acne_detect/test");
     //File patchedImagePath = new File("C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\patch_path");
-    File patchedImagePath = new File("\\home\\ec2-user\\acne_detect\\dist\\acne_detect\\patch_path");
+    File patchedImagePath = new File("/home/ec2-user/acne_detect/dist/acne_detect/patch_path");
     //private String resultFile = "C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\result_file.csv";
-    private String resultFile = "\\home\\ec2-user\\acne_detect\\dist\\acne_detect\\result_file.csv";
+    private String resultFile = "/home/ec2-user/acne_detect/dist/acne_detect/result_file.csv";
     private File[] rawImageFiles = rawImagePath.listFiles();
     private File[] patchedImageFiles = patchedImagePath.listFiles();
     private String uid;
@@ -69,8 +69,8 @@ public class DiagnosisController {
     public String acneDetectOk(Acne a){
         Runtime rt = Runtime.getRuntime();
 
-        //String url = "C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\acne_detect.exe";
-        String url = "\\home\\ec2-user\\acne_detect\\dist\\acne_detect\\acne_detect.exe";
+        String url = "C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\acne_detect.exe";
+        //String url = "\\home\\ec2-user\\acne_detect\\dist\\acne_detect\\acne_detect.exe";
         Process pro;
 
         try{
@@ -113,7 +113,7 @@ public class DiagnosisController {
 
     public void readCSV(Acne a) {
         //File csv = new File("C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\result_file.csv");
-        File csv = new File("\\home\\ec2-user\\acne_detect\\dist\\acne_detect\\result_file.csv");
+        File csv = new File("/home/ec2-user/acne_detect/dist/acne_detect/result_file.csv");
         BufferedReader br = null;
         String line = "";
 
