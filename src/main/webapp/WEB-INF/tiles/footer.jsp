@@ -20,9 +20,10 @@
                     <c:forEach var="n" items="${sessionScope.Notice}" begin="0" end="4">
                     <ul>
                         <li>
-                            <a href="/notice/detail?bno=${n.bno}">${n.title} </a> <!--2019/01/31-->
+                            <a href="/notice/detail?bno=${n.bno}">${n.title}</a> <!--2019/01/31-->
                         </li>
                     </ul>
+                        <br>
                     </c:forEach>
                 </div>
             </li>

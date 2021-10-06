@@ -4,7 +4,7 @@
     <div id="container">
         <div id="contents_main">
             <!-- Slider main container -->
-            <div class="swiper" style="margin-top:-150px;">
+            <div class="swiper swiperMain" style="margin-top:-150px;">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
@@ -115,7 +115,7 @@
                         <div class="index_board_list">
                             <ul>
                                 <li class="item">
-                                    <a href="/pc/community/event_end.html?bmain=view&uid=19&mode=" class="wrap">
+                                    <a href="/event/detail?bno=4" class="wrap">
                                         <img src="/images/event/thumbnail/event1.jpg">
                                         <div class="txt_wrap">
                                             <p class="tit">[11월 EVENT]With CORONA, 아자아자 대한민국</p>
@@ -125,7 +125,7 @@
                                 </li>
 
                                 <li class="item">
-                                    <a href="/pc/community/event_end.html?bmain=view&uid=18&mode=" class="wrap">
+                                    <a href="/event/detail?bno=3" class="wrap">
                                         <img src="/images/event/thumbnail/event2.jpg">
                                         <div class="txt_bx">
                                             <div class="txt_wrap">
@@ -137,7 +137,7 @@
                                 </li>
 
                                 <li class="item">
-                                    <a href="/pc/community/event_end.html?bmain=view&uid=17&mode=" class="wrap">
+                                    <a href="/event/detail?bno=2" class="wrap">
                                         <img src="/images/event/thumbnail/event3.jpg">
                                         <div class="txt_bx">
                                             <div class="txt_wrap">
@@ -149,7 +149,7 @@
                                 </li>
 
                                 <li class="item">
-                                    <a href="/pc/community/event_end.html?bmain=view&uid=16&mode=" class="wrap">
+                                    <a href="/event/detail?bno=1" class="wrap">
                                         <img src="/images/event/thumbnail/event4.jpg">
                                         <div class="txt_bx">
                                             <div class="txt_wrap">
@@ -164,6 +164,64 @@
                     </div>
 
                     <section class="main_video_area">
+                        <div style="font-size: 27px; text-align: center; padding-bottom: 30px;">
+                            <img src="/images/home/subheading/youtube_mini.png" height="50px"> VIDEO
+                        </div>
+
+                        <div style="margin: 0 20px 0 20px">
+                            <div class="swiper swiperYoutube">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="video-container" data-id="eUEoPHp5720">
+                                            <div class="video-iframe"></div>
+                                            <div class="video-play"></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="video-container" data-id="S2ke2Or43Oc">
+                                            <div class="video-iframe"></div>
+                                            <div class="video-play"></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="video-container" data-id="i-cyND5e_5g">
+                                            <div class="video-iframe"></div>
+                                            <div class="video-play"></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="video-container" data-id="bVQAGWoUAhI">
+                                            <div class="video-iframe"></div>
+                                            <div class="video-play"></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="video-container" data-id="b_Qww6wuwvo">
+                                            <div class="video-iframe"></div>
+                                            <div class="video-play"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <style>
+                                    .swiper2.swiper-button-prev:after {
+                                        margin-right: 300px;
+                                    }
+                                    .swiper2.swiper-button-next:after {
+                                        margin-left: 300px;
+                                    }
+
+
+                                </style>
+                                <div class="swiper2 swiper-button-prev" style="color: grey; width: 370px; height: 340px;top: 35px;"></div>
+                                <div class="swiper2 swiper-button-next" style="color: grey; width: 370px; height: 340px;top: 35px;"></div>
+                            </div>
+                        </div>
+                        <div class="viewMore">
+                            <a href="https://www.youtube.com/channel/UCKgH2yodYlYtvGwbvJcCcxg">more</a>
+                        </div>
+                    </section>
+
+                   <%-- <section class="main_video_area">
                         <div style="font-size: 27px; text-align: center;">
                             <img src="/images/home/subheading/youtube_mini.png" height="50px"> VIDEO
                         </div>
@@ -210,10 +268,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="viewMore">
-                            <a href="https://www.youtube.com/channel/UCKgH2yodYlYtvGwbvJcCcxg">more</a>
-                        </div>
-                    </section>
+                    </section> --%>
 
                     <div style="clear:both">
                 </div>

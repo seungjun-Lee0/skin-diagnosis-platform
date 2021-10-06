@@ -17,7 +17,7 @@ public class DiagnosisServiceImpl implements DiagnosisService{
     @Autowired private ImgUploadUtil imgutil;
 
     //private String uploadPath = "C:\\Users\\USER\\IdeaProjects\\the3.0-dermatology-hospital-website\\src\\main\\webapp\\resources\\images\\downloadedImages\\";
-    private String uploadPath = "/home/ec2-user/apache-tomcat-8.5.75/webapps/SemiProjectV3-1.0-SNAPSHOT/resources/images/downloadedImages/";
+    private String uploadPath = "/opt/tomcat/apache-tomcat-8.5.75/webapps/SemiProjectV3-1.0-SNAPSHOT/resources/images/downloadedImages/";
     private String dir = "diagnosis/";
 
     @Override

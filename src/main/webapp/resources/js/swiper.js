@@ -1,4 +1,4 @@
-const swiper = new Swiper('.swiper', {
+new Swiper('.swiperMain', {
     // Optional parameters
     direction: 'horizontal',
     effect: "fade",
@@ -19,5 +19,28 @@ const swiper = new Swiper('.swiper', {
     autoplay: {
         delay: 5000,
         disableOnInteraction: false,
+    },
+});
+
+new Swiper(".swiperYoutube", {
+    effect: "coverflow",
+    centeredSlides: true,
+    slidesPerView: 2.3,
+    initialSlide: 3,
+    coverflowEffect: {
+        rotate: 20,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    pagination: {
+        el: ".swiper-pagination",
     },
 });
