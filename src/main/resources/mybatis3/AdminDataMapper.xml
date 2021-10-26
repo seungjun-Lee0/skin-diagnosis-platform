@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminData">
+
+    <insert id="insertAdminDataLog" statementType="PREPARED" parameterType="lsj.spring.project.vo.AdminData">
+        insert into the3.the3_adminData(uname, ubdate, pd1, pd2, hz, s1, s2, s3, moistureLev, thicknessRes, elasticityRes, moistureLevRes, type)
+        values (#{uname}, #{ubdate}, #{pd1}, #{pd2}, #{hz}, #{s1}, #{s2}, #{s3}, #{moistureLev}, #{thicknessRes}, #{elasticityRes}, #{moistureLevRes}, 'C')
+    </insert>
+
+    <insert id="insertAdminDataCureV" statementType="PREPARED" parameterType="lsj.spring.project.vo.AdminData">
+        insert into the3.the3_adminData(uname, ubdate, vMode, vSensitivity, vTime, vHz, type)
+        values (#{uname}, #{ubdate}, #{vMode}, #{vSensitivity}, #{vTime}, #{vHz}, 'V')
+    </insert>
+
+    <insert id="insertAdminDataCureI" statementType="PREPARED" parameterType="lsj.spring.project.vo.AdminData">
+        insert into the3.the3_adminData(uname, ubdate, iTime, iCurrent, type)
+        values (#{uname}, #{ubdate}, #{iTime}, #{iCurrent}, 'I')
+    </insert>
+
+    <insert id="insertAdminDataCureT" statementType="PREPARED" parameterType="lsj.spring.project.vo.AdminData">
+        insert into the3.the3_adminData(uname, ubdate, tTime, tVoltage, tHz, type)
+        values (#{uname}, #{ubdate}, #{tTime}, #{tVoltage}, #{tHz}, 'T')
+    </insert>
+
+    <insert id="insertAdminDataCureL" statementType="PREPARED" parameterType="lsj.spring.project.vo.AdminData">
+        insert into the3.the3_adminData(uname, ubdate, lMode, lBrightness, lTime, lHz, type)
+        values (#{uname}, #{ubdate}, #{lMode}, #{lBrightness}, #{lTime}, #{lHz}, 'L')
+    </insert>
+
+    <select id="selectAdminData" statementType="PREPARED" parameterType="int" resultType="lsj.spring.project.vo.AdminData">
+        select * from the3.the3_adminData order by adno desc limit #{snum}, 10
+    </select>
+
+    <select id="findSelectAdminData" statementType="PREPARED" parameterType="map" resultType="lsj.spring.project.vo.AdminData">
+        select * from the3.the3_adminData
+            where uname like #{fkey1} and ubdate like #{fkey2}
+        order by adno desc limit #{snum}, 10
+    </select>
+
+    <select id="selectAllAdminData" statementType="PREPARED" resultType="lsj.spring.project.vo.AdminData">
+        select * from the3.the3_adminData order by adno desc
+    </select>
+
+    <select id="selectOneAdminData" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.AdminData">
+        select * from the3.the3_adminData where adno = #{adno}
+    </select>
+
+    <select id="selectCountAdminData" statementType="PREPARED" resultType="int">
+        select count(adno) cnt from the3.the3_adminData
+    </select>
+
+    <select id="findSelectCountAdminData" statementType="PREPARED" parameterType="map" resultType="int">
+        select count(adno) cnt from the3.the3_adminData
+        where uname like #{fkey1} and ubdate like #{fkey2}
+    </select>
+
+    <delete id="deleteAdminInquiry" statementType="PREPARED"
+            parameterType="int">
+        delete from the3.the3_adminData
+        where adno = #{adno}
+    </delete>
+
+</mapper>
