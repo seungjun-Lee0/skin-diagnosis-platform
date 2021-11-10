@@ -174,9 +174,10 @@ $('#analysisbtn').on('click', function () {
 
     var pattern = /^[a-zA-Zㄱ-힣0-9|s]*$/;
 
-    if (!$('#img1').val() || !$('#img2').val() || !$('#img3').val()) alert('정면과 측면 사진을 모두 올려주세요!');
+    /*if (!$('#img1').val() || !$('#img2').val() || !$('#img3').val()) alert('정면과 측면 사진을 모두 올려주세요!');
     else if ($('#ftype1').val() == 'false' || $('#ftype2').val() == 'false' || $('#ftype3').val() == 'false') alert('이미지 파일(jpg, gif, png, jpeg)만 선택할 수 있습니다');
-    else if (!pattern.test($('#s3_13').val()) || !pattern.test($('#s4_13').val())) alert('특수문자를 포함할 수 없습니다!')
+    */
+    if (!pattern.test($('#s3_13').val()) || !pattern.test($('#s4_13').val())) alert('특수문자를 포함할 수 없습니다!')
     else {
         if (isSubmitted) {
             const frm = $('#analysisfrm');

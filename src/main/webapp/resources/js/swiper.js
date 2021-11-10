@@ -4,11 +4,11 @@ new Swiper('.swiperMain', {
     effect: "fade",
     centerSlides: true ,
 
-    // If we need pagination
+    /*// If we need pagination
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
-    },
+    },*/
 
     // Navigation arrows
     navigation: {

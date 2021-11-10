@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/the3.css" />
     <link rel="stylesheet" type="text/css" href="/css/modal.css" />
     <link rel="stylesheet" type="text/css" href="/css/froala.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animate.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
@@ -20,32 +21,37 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    <script src="/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
     <title>더3.0피부과 임시 누리집</title>
 
 </head>
 
 <body>
 
-<div class="container">
-    <tiles:insertAttribute name="header" />
+    <div class="container">
+        <tiles:insertAttribute name="header" />
 
-    <tiles:insertAttribute name="main" />
+        <tiles:insertAttribute name="main" />
 
-    <tiles:insertAttribute name="footer" />
-</div>
+        <tiles:insertAttribute name="footer" />
+    </div>
 
-<script src="/js/header.js"></script>
-<script src="/js/video.js"></script>
-<script src="/js/swiper.js"></script>
-<script src="/js/member.js"></script>
-<script src="/js/notice.js"></script>
-<script src="/js/date.js"></script>
-<script src="/js/event.js"></script>
-<script src="/js/inquiry.js"></script>
-<script src="/js/modal.js"></script>
-<script src="/js/diagnosis.js"></script>
-<script src="/js/home.js"></script>
-
+    <script src="/js/header.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/swiper.js"></script>
+    <script src="/js/member.js"></script>
+    <script src="/js/notice.js"></script>
+    <script src="/js/date.js"></script>
+    <script src="/js/event.js"></script>
+    <script src="/js/inquiry.js"></script>
+    <script src="/js/modal.js"></script>
+    <script src="/js/diagnosis.js"></script>
+    <script src="/js/adminData.js"></script>
+    <script src="/js/home.js"></script>
 
 </body>
 

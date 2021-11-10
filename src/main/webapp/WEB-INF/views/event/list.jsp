@@ -26,7 +26,6 @@
 </c:if>
 
 <c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/event/" />
-<%--<c:set var="baseURL" value="/home/ec2-user/downloadedImages/event/" /> --%>
 
 <div id="contents">
 
@@ -77,10 +76,10 @@
     </div>
 
     <div class="button_pos">
-        <div class="btnArea M b_right">
-            <c:if test="${sessionScope.MyInfo.uid eq 'admin'}">
+        <div class="btnArea M b_right"><%--
+            <c:if test="${sessionScope.MyInfo.uid eq 'admin'}">--%>
                 <a href="/event/write" class="black_s">작성하기</a>
-            </c:if>
+            <%--</c:if>--%>
         </div>
     </div>
 

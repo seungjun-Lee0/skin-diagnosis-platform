@@ -103,7 +103,7 @@
                         <span class="txtEm"><c:if test="${i.comment gt 0}">[${i.comment}]</c:if></span>
                     </td>
                     <td>${i.uid}</td>
-                    <td><span class="txtNum">${fn:substring(i.regdate, 0, 10)}</span></td>
+                        <td><span class="txtNum">${fn:substring(i.regdate, 0, 10)}</span></td>
                     <td><span class="txtNum">${i.views}</span></td>
                     <c:set var="snum" value="${snum-1}" />
                 </tr>

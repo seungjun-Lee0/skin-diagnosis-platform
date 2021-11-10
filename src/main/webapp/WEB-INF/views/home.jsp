@@ -39,8 +39,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
 
                 <!-- If we need navigation buttons -->
                 <div class="swiper-button-prev" style="color: grey"></div>
@@ -163,7 +161,7 @@
                         </div>
                     </div>
 
-                    <section class="main_video_area">
+                    <div class="main_video_area">
                         <div style="font-size: 27px; text-align: center; padding-bottom: 30px;">
                             <img src="/images/home/subheading/youtube_mini.png" height="50px"> VIDEO
                         </div>
@@ -174,7 +172,7 @@
                                     <div class="swiper-slide">
                                         <div class="video-container" data-id="eUEoPHp5720">
                                             <div class="video-iframe"></div>
-                                            <div class="video-play"></div>
+                                            <div class="video-play" ></div>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
@@ -204,22 +202,22 @@
                                 </div>
                                 <style>
                                     .swiper2.swiper-button-prev:after {
-                                        margin-right: 300px;
+                                        margin-right: 230px;
                                     }
                                     .swiper2.swiper-button-next:after {
-                                        margin-left: 300px;
+                                        margin-left: 230px;
                                     }
 
 
                                 </style>
-                                <div class="swiper2 swiper-button-prev" style="color: grey; width: 370px; height: 340px;top: 35px;"></div>
-                                <div class="swiper2 swiper-button-next" style="color: grey; width: 370px; height: 340px;top: 35px;"></div>
+                                <div class="swiper2 swiper-button-prev" style="color: grey; width: 25%; height: 90%;top: 35px;"></div>
+                                <div class="swiper2 swiper-button-next" style="color: grey; width: 25%; height: 90%;top: 35px;"></div>
                             </div>
                         </div>
                         <div class="viewMore">
                             <a href="https://www.youtube.com/channel/UCKgH2yodYlYtvGwbvJcCcxg">more</a>
                         </div>
-                    </section>
+                    </div>
 
                    <%-- <section class="main_video_area">
                         <div style="font-size: 27px; text-align: center;">

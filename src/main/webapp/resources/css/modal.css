@@ -46,3 +46,49 @@
 .modal .modal-content input[type=radio]{
     height: 21px;
 }
+
+/* ------------------------------------------------------------- */
+
+.adminModal {
+    overflow: auto;
+}
+
+.adminTitle{
+    margin: 2% 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.adminModalContent {
+    padding: 20px;
+}
+
+.adminModalTitle{
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.adminModal .adminModalContent .tr{
+    background: #f7f7f7
+}
+
+.adminModal .adminModalContent td:not(.center tr td){
+    border: 1.3px solid #ddd;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.adminModalContent .center tr:hover{
+    background: gray;
+    opacity: 0.2;
+}
+
+.adminModal .adminModalContent td:last-child, .adminModal .adminModalContent th:last-child{
+    border-right: 0;
+}
+
+.adminModal .adminModalContent td:first-child, .adminModal .adminModalContent th:first-child{
+    border-left: 0;
+}
+

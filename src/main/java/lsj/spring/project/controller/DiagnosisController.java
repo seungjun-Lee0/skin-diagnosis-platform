@@ -67,10 +67,10 @@ public class DiagnosisController {
 
     @PostMapping("/diagnosis/acne_detect")
     public String acneDetectOk(Acne a){
-        Runtime rt = Runtime.getRuntime();
+        /*Runtime rt = Runtime.getRuntime();
 
-        //String url = "C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\acne_detect.exe";
-        String url = "/opt/tomcat/acne_detect/dist/acne_detect/acne_detect.exe";
+        String url = "C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\acne_detect.exe";
+        //String url = "/opt/tomcat/acne_detect/dist/acne_detect/acne_detect.exe";
         Process pro;
 
         try{
@@ -106,14 +106,14 @@ public class DiagnosisController {
             readCSV(a);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
-        return "redirect:/diagnosis/result";
+        return "redirect:/diagnosis/completed";
     }
 
-    public void readCSV(Acne a) {
-        //File csv = new File("C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\result_file.csv");
-        File csv = new File("/opt/tomcat/acne_detect/dist/acne_detect/result_file.csv");
+    /*public void readCSV(Acne a) {
+        File csv = new File("C:\\Users\\USER\\Desktop\\acne_detect\\dist\\acne_detect\\result_file.csv");
+        //File csv = new File("/opt/tomcat/acne_detect/dist/acne_detect/result_file.csv");
         BufferedReader br = null;
         String line = "";
 
@@ -149,7 +149,8 @@ public class DiagnosisController {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
+
     @GetMapping("/diagnosis/result")
     public ModelAndView diagnosisResult(ModelAndView mv){
         mv.addObject("rsall", dgsrv.readAcneScore(uid));

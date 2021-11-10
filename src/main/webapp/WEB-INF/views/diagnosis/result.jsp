@@ -81,7 +81,6 @@
 
                 </div>
                 <div class="diagnosis-text-table-row">
-                    <button class="btn" style="width: 190%;margin-left: 47%;margin-bottom: 10%; border: 2px dashed transparent; color: transparent">눈주위</button>
                 </div>
                 <div class="diagnosis-text-table-row">
                     <div></div>

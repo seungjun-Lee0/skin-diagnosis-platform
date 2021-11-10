@@ -713,7 +713,7 @@
         </ul>
     </div>
 
-    <div class="diagnosis-choice-wrapper js-question js-block-1 number-type-nonum" style="float: left">
+    <%--<div class="diagnosis-choice-wrapper js-question js-block-1 number-type-nonum" style="float: left">
         <div class="diagnosis-question-wrapper">
             <span class="diagnosis-question-number diagnosis-style-question-number">
                 <span class="diagnosis-icon-required">*</span>
@@ -760,7 +760,7 @@
     </div>
     <div>
         <img class="diagnosis-img" src="/images/diagnosis/side(left).png">
-    </div>
+    </div>--%>
     <div class="join_btn" style="margin-top: 50px;">
         <a id="analysisbtn" class="btn-type-01">제출완료</a>
     </div>

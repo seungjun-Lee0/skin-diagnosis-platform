@@ -32,6 +32,7 @@ public class DiagnosisServiceImpl implements DiagnosisService{
 
     @Override
     public void newDiagnosis2(Diagnosis d, MultipartFile[] img) {
+        /*
         String uuid = imgutil.makeUUID(); // create identification code
 
         String[] pos = {"front", "right", "left"};
@@ -62,8 +63,7 @@ public class DiagnosisServiceImpl implements DiagnosisService{
         else{
             d.setFnames( "-/-/-/");
             d.setUuid( uuid );
-        }
-
+        }*/
         dgdao.insertDiagnosis2(d);
     }
 
