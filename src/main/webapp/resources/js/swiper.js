@@ -10,12 +10,6 @@ new Swiper('.swiperMain', {
         clickable: true,
     },*/
 
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
     autoplay: {
         delay: 5000,
         disableOnInteraction: false,
@@ -26,7 +20,7 @@ new Swiper(".swiperYoutube", {
     effect: "coverflow",
     centeredSlides: true,
     slidesPerView: 2.3,
-    initialSlide: 3,
+    initialSlide: 2,
     coverflowEffect: {
         rotate: 20,
         stretch: 0,

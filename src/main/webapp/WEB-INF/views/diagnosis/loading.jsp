@@ -125,7 +125,7 @@
     }
 </style>
 
-<div id="contents" style="background-color:snow; border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px; width: calc(60% - 80px)">
+<div id="contents" style="background-color:snow; border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px;">
     <ul class="breadcrumb">
         <li>자가진단</li>
         <li class="active">원인분석</li>

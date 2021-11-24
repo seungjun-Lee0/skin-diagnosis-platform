@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
+<!--
+<!%
     String strReferer = request.getHeader("referer");
 
     if(strReferer == null){
@@ -10,10 +11,11 @@
     alert("정상적인 경로를 통해 다시 접근해 주세요.");
     document.location.href="/";
 </script>
-<%
+<!%
         return;
     }
 %>
+-->
 
 <div id="contents">
 
@@ -66,7 +68,7 @@
                 <tr>
                     <td colspan="2">
                         <input type="checkbox" id="secretagreed1" value="1">
-                        <label for="secretagreed1">비밀글:&nbsp;<input type="password" name="pwd" id="pwd" style="width: 244px; height: 36px" disabled></label>
+                        <label for="secretagreed1">비밀글:&nbsp;<input type="password" name="pwd" id="pwd" style="width: 238px; height: 36px" disabled></label>
                     </td>
                 </tr>
                 </tbody>

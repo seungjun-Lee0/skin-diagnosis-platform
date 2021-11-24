@@ -3,6 +3,7 @@ package lsj.spring.project.controller;
 import lsj.spring.project.service.DiagnosisService;
 import lsj.spring.project.service.InquiryService;
 import lsj.spring.project.service.MemberService;
+import lsj.spring.project.vo.Diagnosis;
 import lsj.spring.project.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 public class MypageController {

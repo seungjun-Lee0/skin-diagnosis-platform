@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div id="contents" style="height: 450px">
+<div id="contents">
 <form class="loginForm" role="form" name="loginfrm" id="loginfrm">
     <h2>LOGIN</h2>
     <div class="idForm">

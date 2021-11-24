@@ -29,9 +29,9 @@
             <div class="right wow fadeInDown" data-wow-delay="0.2s">
                 <div class="adminPage">
                     <div class="adminPageMain">
-                        <a href="/admin/main" class="adminPageMain_box">
-                            <h3>측정</h3>
-                            <p>진단을 통한 측정값을<br>저장합니다.</p>
+                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box">
+                            <h3>조회</h3>
+                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
                         </a>
                     </div>
                     <div class="adminPageMain">
@@ -41,9 +41,9 @@
                         </a>
                     </div>
                     <div class="adminPageMain">
-                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box">
-                            <h3>조회</h3>
-                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
+                        <a href="/admin/main" class="adminPageMain_box">
+                            <h3>측정</h3>
+                            <p>진단을 통한 측정값을<br>저장합니다.</p>
                         </a>
                     </div>
                 </div>

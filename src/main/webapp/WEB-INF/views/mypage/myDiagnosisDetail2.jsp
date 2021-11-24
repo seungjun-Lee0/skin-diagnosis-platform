@@ -3,7 +3,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%
+<!--
+<!%
     String strReferer = request.getHeader("referer");
 
     if(strReferer == null){
@@ -12,10 +13,11 @@
     alert("정상적인 경로를 통해 다시 접근해 주세요.");
     document.location.href="/";
 </script>
-<%
+<!%
         return;
     }
 %>
+-->
 
 <c:if test="${dts eq null}">
     <script language="javascript">
@@ -39,7 +41,7 @@
 <c:set var="s11" value="${fn:split(dts.s11,'/')}"/>
 <c:set var="s12" value="${fn:split(dts.s12,'/')}"/>
 
-<div id="contents" style="background-color:snow; border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px; width: calc(60% - 80px)">
+<div id="contents" style="background-color:snow; border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px;">
     <ul class="breadcrumb">
         <li>자가진단</li>
         <li class="active">원인분석</li>
@@ -728,6 +730,7 @@
         </ul>
     </div>
 
+	<!--
     <div class="diagnosis-choice-wrapper js-question js-block-1 number-type-nonum" style="float: left">
         <div class="diagnosis-question-wrapper">
             <span class="diagnosis-question-number diagnosis-style-question-number">
@@ -784,6 +787,7 @@
             </c:if>
         </ul>
     </div>
+	-->
 
     <div style="clear: both"></div>
 

@@ -1,18 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
-  String strReferer = request.getHeader("referer");
 
-  if(strReferer == null){
-%>
-<script language="javascript">
-  alert("정상적인 경로를 통해 다시 접근해 주세요.");
-  document.location.href="/";
-</script>
-<%
-    return;
-  }
-%>
 
 <div id="contents">
 

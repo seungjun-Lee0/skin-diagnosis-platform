@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/css/modal.css" />
     <link rel="stylesheet" type="text/css" href="/css/froala.css" />
     <link rel="stylesheet" type="text/css" href="/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
@@ -39,6 +40,12 @@
 
         <tiles:insertAttribute name="footer" />
     </div>
+	
+	<div id="top_btn">
+		<a href="#top">
+			<img src="/images/home/right_quick/top_btn.png" height="50" width=50" alt="Top 버튼" />
+		</a>
+	</div>
 
     <script src="/js/header.js"></script>
     <script src="/js/video.js"></script>
@@ -46,6 +53,7 @@
     <script src="/js/member.js"></script>
     <script src="/js/notice.js"></script>
     <script src="/js/date.js"></script>
+    <script src="/js/time.js"></script>
     <script src="/js/event.js"></script>
     <script src="/js/inquiry.js"></script>
     <script src="/js/modal.js"></script>
@@ -55,10 +63,6 @@
 
 </body>
 
-<div id="top_btn">
-    <a href="#top">
-        <img src="/images/home/right_quick/top_btn.png" height="50" width=50" alt="Top 버튼" />
-    </a>
-</div>
+
 
 </html>

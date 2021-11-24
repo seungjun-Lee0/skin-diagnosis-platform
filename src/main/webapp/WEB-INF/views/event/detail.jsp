@@ -15,7 +15,7 @@
     </script>
 </c:if>
 
-<div id="contents" style="margin-top: 150px; margin-bottom: 150px;">
+<div id="contents">
 
     <div class="titleArea">
         <h2><a href="/event/list?cp=1">EVENT</a></h2>

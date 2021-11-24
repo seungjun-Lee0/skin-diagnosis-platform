@@ -19,7 +19,7 @@
     </update>
 
     <select id="selectDiagnosis" statementType="PREPARED" parameterType="int" resultType="lsj.spring.project.vo.Diagnosis">
-        select dno, uid, uemail, uname, regdate, status from the3.the3_diagnosis order by dno desc limit #{snum}, 10
+        select dno, uid, uemail, uname, regdate, status from the3.the3_diagnosis order by dno desc
     </select>
 
     <select id="selectOne" statementType="PREPARED" parameterType="String" resultType="lsj.spring.project.vo.Diagnosis">

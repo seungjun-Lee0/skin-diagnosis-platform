@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
+<!--
+<!%
     String strReferer = request.getHeader("referer");
 
     if(strReferer == null){
@@ -9,10 +10,11 @@
     alert("정상적인 경로를 통해 다시 접근해 주세요.");
     document.location.href="/";
 </script>
-<%
+<!%
         return;
     }
 %>
+-->
 
 <div id="contents" style="border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px;">
     <div class="join_title">
@@ -21,7 +23,7 @@
 
     <form name="signinform" id="signinform" role="form" ENCTYPE="multipart/form-data">
         <div class="signIn_page_wrap">
-            <div class="text_right" style="margin-right: 5%">
+            <div class="text_right est_input">
                 <span class="red_01">*</span> 필수 입력 항목
             </div>
             <table class="signIn-table-form joinType">
@@ -81,7 +83,7 @@
                             <span>@</span>
                             <span><input type="text" name="uemail2" id="uemail2" title="이메일" class="input_for" placeholder="주소 선택"readonly></span>
                             <span>
-                                <select name="uemail3" id="uemail3" style="width: 100px;">
+                                <select name="uemail3" id="uemail3" style="height: 35.6px;">
                                     <option value="" selected>이메일선택</option>
                                     <option>nate.com</option>
                                     <option>gmail.com</option>
@@ -100,20 +102,22 @@
                         * 휴대전화번호
                     </th>
                     <td>
-                        <ul class="num">
+                        <ul class="num" style="display: inline;">
                             <li>
                                 <input name="utel1" id="utel1" title="휴대전화번호" maxlength="4" type="text" size="4" value="010" />
                             </li>
-                            <li>-
+							<span>-</span>
+                            <li>
                                 <input name="utel2" id="utel2" title="휴대전화번호" maxlength="4" type="text" size="4" placeholder="앞자리" /></li>
-                            <li>-
+                            <span>-</span>
+							<li>
                                 <input name="utel3" id="utel3" title="휴대전화번호" maxlength="4" type="text" size="4" placeholder="뒷자리" /></li>
                         </ul>
                         <span id="utelmsg"></span>
                     </td>
                 </tr>
                 <tr>
-                    <th>
+                    <th style="text-indent: 8px;">
                         수신동의
                     </th>
                     <td>

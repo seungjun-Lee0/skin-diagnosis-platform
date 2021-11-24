@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<%
+<!--
+<!%
     String strReferer = request.getHeader("referer");
 
     if(strReferer == null){
@@ -11,10 +12,11 @@
     alert("정상적인 경로를 통해 다시 접근해 주세요.");
     document.location.href="/";
 </script>
-<%
+<!%
         return;
     }
 %>
+-->
 
 <div id="contents">
 

@@ -12,12 +12,18 @@
         <div class="flex">
             <div class="adminModal">
                 <div class="adminModalContent">
-                    <div class="adminModalTitle">측정 / 치료</div>
+                    <div class="adminModalTitle">
+						<c:if test="${adTs.type eq 'C'}">측정 수치</c:if>
+                        <c:if test="${adTs.type eq 'V'}">진동자 치료 수치</c:if>
+                        <c:if test="${adTs.type eq 'I'}">이온전극 치료 수치</c:if>
+                        <c:if test="${adTs.type eq 'T'}">T.E.N.S 치료 수치</c:if>
+                        <c:if test="${adTs.type eq 'L'}">라이트닝 치료 수치</c:if>
+					</div>
                     <div class="adminInquiryInfo">
                         성함 : ${adTs.uname} |
                         생년월일 : ${adTs.ubdate} |
-                        저장날짜 : ${fn:substring(adTs.regdate, 0, 10)}
-                        <span class="btnArea M b_center" style="float: right">
+                        측정날짜 : ${fn:substring(adTs.regdate, 0, 10)}
+                        <span class="btnArea M b_center" style="float: right; width: 22%; max-width: 80px">
                             <a href="/admin/inquiry?cp=1" class="close custom_s">이전</a>
                         </span>
                     </div>
@@ -36,10 +42,10 @@
                         <tr>
                             <td style="text-align: center">피부 두께</td>
                             <td>
-                                PD1 수치 :<input type="text" maxlength="4" txtlimit="5" class="adminInput" value="${adTs.pd1}" readonly>
+                                PD1 :<input type="text" maxlength="4" txtlimit="5" class="adminInput" value="${adTs.pd1}" readonly>
                             </td>
                             <td>
-                                PD2 수치 :<input type="text" maxlength="4" txtlimit="5" class="adminInput" value="${adTs.pd2}" readonly>
+                                PD2 :<input type="text" maxlength="4" txtlimit="5" class="adminInput" value="${adTs.pd2}" readonly>
                             </td>
                             <td></td>
                             <td></td>
@@ -47,21 +53,21 @@
                         <tr>
                             <td style="text-align: center">피부 탄성도</td>
                             <td>
-                                주파수 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.hz}" readonly>
+                                주파수 :<input type="text" maxlength="4" class="adminInput" value="${adTs.hz}" readonly>
                             </td>
                             <td>
-                                S1 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.s1}" readonly>
+                                S1 :<input type="text" maxlength="4" class="adminInput" value="${adTs.s1}" readonly>
                             <td>
-                                S2 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.s2}" readonly>
+                                S2 :<input type="text" maxlength="4" class="adminInput" value="${adTs.s2}" readonly>
                             </td>
                             <td>
-                                S3 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.s3}" readonly>
+                                S3 :<input type="text" maxlength="4" class="adminInput" value="${adTs.s3}" readonly>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: center">피부 수분도</td>
                             <td>
-                                수분도 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.moistureLev}" readonly>
+                                수분도 :<input type="text" maxlength="4" class="adminInput" value="${adTs.moistureLev}" readonly>
                             </td>
                             <td></td>
                             <td></td>
@@ -70,13 +76,13 @@
                         <tr>
                             <td style="text-align: center">측정 결과</td>
                             <td>
-                                두께 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.thicknessRes}" readonly>
+                                두께 :<input type="text" maxlength="4" class="adminInput" value="${adTs.thicknessRes}" readonly>
                             </td>
                             <td>
-                                탄성도 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.elasticityRes}" readonly>
+                                탄성도 :<input type="text" maxlength="4" class="adminInput" value="${adTs.elasticityRes}" readonly>
                             </td>
                             <td>
-                                수분도 수치 :<input type="text" maxlength="4" class="adminInput" value="${adTs.moistureLevRes}" readonly>
+                                수분도 :<input type="text" maxlength="4" class="adminInput" value="${adTs.moistureLevRes}" readonly>
                             </td>
                             <td></td>
                         </tr>
@@ -99,19 +105,19 @@
                         <tr>
                             <td style="text-align: center">모드</td>
                             <td>
-                                MODE1<input type="radio" name="mode" id="m1" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm1'}">checked</c:if> onclick="return(false);">
+                                M1<input type="radio" name="mode" id="m1" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm1'}">checked</c:if> onclick="return(false);">
                             </td>
                             <td>
-                                MODE2<input type="radio" name="mode" id="m2" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm2'}">checked</c:if> onclick="return(false);">
+                                M2<input type="radio" name="mode" id="m2" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm2'}">checked</c:if> onclick="return(false);">
                             </td>
                             <td>
-                                MODE3<input type="radio" name="mode" id="m3" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm3'}">checked</c:if> onclick="return(false);">
+                                M3<input type="radio" name="mode" id="m3" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm3'}">checked</c:if> onclick="return(false);">
                             </td>
                             <td>
-                                MODE4<input type="radio" name="mode" id="m4" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm4'}">checked</c:if> onclick="return(false);">
+                                M4<input type="radio" name="mode" id="m4" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm4'}">checked</c:if> onclick="return(false);">
                             </td>
                             <td>
-                                MODE5<input type="radio" name="mode" id="m5" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm5'}">checked</c:if> onclick="return(false);">
+                                M5<input type="radio" name="mode" id="m5" class="radioBtnRight" <c:if test="${adTs.vMode eq 'm5'}">checked</c:if> onclick="return(false);">
                             </td>
                         </tr>
                         <tr>
@@ -260,13 +266,13 @@
                         <tr>
                             <td style="text-align: center">모드</td>
                             <td>
-                                MODE1<input type="radio" name="mode" id="m1" class="radioBtnRight" <c:if test="${adTs.lMode eq 'm1'}">checked</c:if> onclick="return(false);">
+                                M1<input type="radio" name="mode" id="m1" class="radioBtnRight" <c:if test="${adTs.lMode eq 'm1'}">checked</c:if> onclick="return(false);">
                             </td>
                             <td>
-                                MODE2<input type="radio" name="mode" id="m2" class="radioBtnRight" <c:if test="${adTs.lMode eq 'm2'}">checked</c:if> onclick="return(false);">
+                                M2<input type="radio" name="mode" id="m2" class="radioBtnRight" <c:if test="${adTs.lMode eq 'm2'}">checked</c:if> onclick="return(false);">
                             </td>
                             <td>
-                                MODE3<input type="radio" name="mode" id="m3" class="radioBtnRight" <c:if test="${adTs.lMode eq 'm3'}">checked</c:if> onclick="return(false);">
+                                M3<input type="radio" name="mode" id="m3" class="radioBtnRight" <c:if test="${adTs.lMode eq 'm3'}">checked</c:if> onclick="return(false);">
                             </td>
                             <td></td>
                             <td></td>
@@ -330,9 +336,9 @@
             <div class="right wow fadeInDown" data-wow-delay="0.2s">
                 <div class="adminPage">
                     <div class="adminPageMain">
-                        <a href="/admin/main" class="adminPageMain_box">
-                            <h3>측정</h3>
-                            <p>진단을 통한 측정값을<br>저장합니다.</p>
+                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box adminPageBtnActive">
+                            <h3>조회</h3>
+                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
                         </a>
                     </div>
                     <div class="adminPageMain">
@@ -341,10 +347,10 @@
                             <p>치료 내용을 저장합니다.</p>
                         </a>
                     </div>
-                    <div class="adminPageMain">
-                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box adminPageBtnActive">
-                            <h3>조회</h3>
-                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
+					<div class="adminPageMain">
+                        <a href="/admin/main" class="adminPageMain_box">
+                            <h3>측정</h3>
+                            <p>진단을 통한 측정값을<br>저장합니다.</p>
                         </a>
                     </div>
                 </div>

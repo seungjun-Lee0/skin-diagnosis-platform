@@ -1,4 +1,5 @@
 let header = document.querySelector("#header");
+let mob_header = document.querySelector(".mob_header");
 let headerHeight = header.offsetHeight;
 
 window.onscroll = function () {
@@ -7,10 +8,12 @@ window.onscroll = function () {
     // 헤더에 클래스 'drop'을 추가한다
     if (windowTop >= headerHeight/ 2) {
         header.classList.add("drop");
+        mob_header.classList.add("drop");
     }
     // 아니면 클래스 'drop'을 제거
     else {
         header.classList.remove("drop");
+        mob_header.classList.remove("drop");
     }
 };
 

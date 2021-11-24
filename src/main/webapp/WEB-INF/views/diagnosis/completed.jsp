@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
+<!--
+<!%
     String strReferer = request.getHeader("referer");
 
     if(strReferer == null){
@@ -10,10 +11,11 @@
     alert("정상적인 경로를 통해 다시 접근해 주세요.");
     document.location.href="/";
 </script>
-<%
+<!%
         return;
     }
 %>
+-->
 
 <c:if test="${sessionScope.MyInfo eq null}">
     <script language="javascript">
@@ -22,7 +24,7 @@
     </script>
 </c:if>
 
-<div id="contents" style="background-color: snow; border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px; width: calc(60% - 80px);">
+<div id="contents" style="background-color: snow; border: 1px solid #ccc; padding-bottom: 40px; border-radius: 5px;">
     <ul class="breadcrumb">
         <li>자가진단</li>
         <li>원인분석</li>

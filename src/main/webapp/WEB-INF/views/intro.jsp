@@ -2,20 +2,19 @@
 <div id="contents">
 
     <div class="introTit">
-            <p class="tit">더삼점영 피부과 소개</p>
+            <p class="tit">더삼점영 피부과</p>
     </div>
 
     <!-- 더삼점영 피부과 소개 -->
     <div class="intro">
         <div class="wrapper">
-            <img src="images/intro/intro_1.png" alt="">
+            <img src="images/intro/intro_1.png" style="width:100%;" alt="">
             <div class="txt_bx" style="margin-top: 30px;">
-                <img src="images/intro/intro_logo.png" alt="the 3.0 Clinic">
                 <h4 class="subtit">
                     여드름PDT의 최초개발, 난치성 흉터 치료,<br>
                     피부관리 위주의 안티에이징 까지
                 </h4>
-                <p class="txt" style="font-size:13px; padding-bottom: 100px;">
+                <p class="txt" style="font-size:13px; padding: 0 3% 3%;">
                     처음에는 먹는 여드름 약의 부작용을 피하기 위해 시작한 노력이었습니다.
                     <br>여드름 치료는 먹는 약과 계속적인 관리를 하는 방법 밖에 없던, 일반적인 피부과 치료, 그리고 필연적으로 수반되는 부작용을 피하기 위해서였죠.
                     <br>그 결과 지금은 번거롭고 부작용이 있는 약을 먹지 않고 여드름을 치료하는 방법을 개발해서 성공적으로 치료하고 있습니다.

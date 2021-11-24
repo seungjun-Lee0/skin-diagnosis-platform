@@ -49,11 +49,11 @@
         <table border="1" summary="">
             <caption>상품 게시판 목록</caption>
             <colgroup>
-                <col style="width:70px;"/>
-                <col style="width:auto;"/>
-                <col style="width:130px;"/>
-                <col style="width:80px;"/>
-                <col style="width:55px;"/>
+                <col style="width:10%;"/>
+                <col style="width:48%;"/>
+                <col style="width:12%;"/>
+                <col style="width:24%;"/>
+                <col style="width:6%;"/>
             </colgroup>
             <thead><tr style=" ">
                 <th scope="col"> 번호</th>
@@ -63,6 +63,13 @@
                 <th scope="col">조회</th>
             </tr></thead>
             <tbody class="center">
+			<c:if test="${snum lt 1}">
+				<tbody class="center" style="height: 144px">
+					<tr>
+						<td class="noResult" colspan="5">검색 결과가 없습니다.</td>
+					</tr>
+				</tbody>
+            </c:if>
             <c:set var="trucnt" value="0"/>
             <c:forEach var="i" items="${isall}">
                 <c:if test="${i.fixed eq 'true'}">

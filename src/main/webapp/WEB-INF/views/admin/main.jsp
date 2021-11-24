@@ -11,10 +11,11 @@
                 <form id="adminDataLogFrm" name="adminDataLogFrm" role="form" enctype="multipart/form-data">
                 <div class="adminModalContent">
                     <div class="adminModalTitle">측정값</div>
-                    <div style="padding-bottom: 12px">
+                    <div class="userInfo">
                         성함 :<input type="text" id="uname" name="uname" maxlength="20" txtlimit="20" class="adminUsrInfo">
                         생년월일 :<input type="text" id="ubdate" name="ubdate" class="adminUsrInfo"readonly>
                     </div>
+					<div class="current_date">측정날짜 : <span id="current_date"></span></div>
                     <table class="table">
                         <thead>
                         <tr class="tr">
@@ -86,9 +87,9 @@
             <div class="right wow fadeInDown" data-wow-delay="0.2s">
                 <div class="adminPage">
                     <div class="adminPageMain">
-                        <a href="/admin/main" class="adminPageMain_box adminPageBtnActive">
-                            <h3>측정</h3>
-                            <p>진단을 통한 측정값을<br>저장합니다.</p>
+                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box">
+                            <h3>조회</h3>
+                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
                         </a>
                     </div>
                     <div class="adminPageMain">
@@ -97,10 +98,10 @@
                             <p>치료 내용을 저장합니다.</p>
                         </a>
                     </div>
-                    <div class="adminPageMain">
-                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box">
-                            <h3>조회</h3>
-                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
+					<div class="adminPageMain">
+                        <a href="/admin/main" class="adminPageMain_box adminPageBtnActive">
+                            <h3>측정</h3>
+                            <p>진단을 통한 측정값을<br>저장합니다.</p>
                         </a>
                     </div>
                 </div>
@@ -108,102 +109,4 @@
         </div>
     </div>
 </div>
-<%--
-<div id="section4">
-    <div class="comm_wrap">
-        <h2 class="wow fadeInUp commo_h2" data-wow-delay="0.2s">피부 진단 수치</h2>
-        <p class="wow fadeInUp top" data-wow-delay="0.3s">기록 및 조회</p>
-        <div class="secWrap4">
-            <div class="table">
-                <div class="room1 r_ovlay">
-                    <img src="/images/admin/hospital_4.png" alt="" />
-                    <div class="opaBox">
-                        <div class="opaLineBox">
-                            <div class="opaLine">
-                                <div class="S_opaLine">
-                                    <dl>
-                                        <dt>Interior for you</dt>
-                                        <dd>환자분의 편의와 편안함을 최우선으로 하여
-                                            <span>솔루션의원의 모든 공간을 1인실로 구성하였습니다.</span>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room2 r_ovlay">
-                    <img src="/images/admin/hospital_1.png" alt="" />
-                    <div class="opaBox">
-                        <div class="opaLineBox">
-                            <div class="opaLine">
-                                <div class="S_opaLine">
-                                    <dl>
-                                        <dt>1 use item</dt>
-                                        <dd>가운, 배드 시트 등 몸에 닿는 모든
-                                            <span>물품은 1회용으로 사용합니다.</span>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room3 r_ovlay">
-                    <img src="/images/admin/hospital_2.png" alt="" />
-                    <div class="opaBox">
-                        <div class="opaLineBox">
-                            <div class="opaLine">
-                                <div class="S_opaLine">
-                                    <dl>
-                                        <dt>Completely <span>private space</span></dt>
-                                        <dd>솔루션의 아늑하고 프라이빗한
-                                            <span>공간에서 편안히 시술받으세요.</span>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table">
-                <div class="room4 r_ovlay">
-                    <img src="/images/admin/hospital_5.png" alt="" />
-                    <div class="opaBox">
-                        <div class="opaLineBox">
-                            <div class="opaLine">
-                                <div class="S_opaLine">
-                                    <dl>
-                                        <dt>No touch <span>System</span></dt>
-                                        <dd>터치없는 센서 작동으로
-                                            <span>완벽한 클린 시스템을 구현하였습니다.</span>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room5 r_ovlay">
-                    <img src="/images/admin/hospital_3.jpg" alt="" />
-                    <div class="opaBox">
-                        <div class="opaLineBox">
-                            <div class="opaLine">
-                                <div class="S_opaLine">
-                                    <dl>
-                                        <dt>Sollution Clinic</dt>
-                                        <dd>편안한 분위기와 함께 진행되는 김솔원장의 집중 케어는
-                                            <span>완전한 힐링과 최고의 결과를 선물합니다.</span>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--%>
 

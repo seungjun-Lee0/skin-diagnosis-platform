@@ -38,7 +38,7 @@
                         성함 :<input type="text" id="findkey1" name="findkey1" maxlength="20" txtlimit="5" class="adminUsrInfo">
                         생년월일 :<input type="text" id="findkey2" name="findkey2" class="adminUsrInfo"readonly>
                         <span class="btnArea M b_center adminSearchBtn">
-                            <a id="adminDataInquiryBtn" class="close custom_s" style="height: 25px; margin-left: 4px;">검색</a>
+                            <a id="adminDataInquiryBtn" class="close custom_s" style="height: 18.5px; margin-left: 4px;">검색</a>
                         </span>
                     </div>
                     <div class="the3-base-table listType">
@@ -55,7 +55,7 @@
                                 <th scope="col">번호</th>
                                 <th scope="col">성함</th>
                                 <th scope="col">생년월일</th>
-                                <th scope="col" class="">작성일</th>
+                                <th scope="col" class="">측정날짜</th>
                                 <th scope="col" class="">종류</th>
                             </tr></thead>
                             <c:if test="${snum lt 1}">
@@ -68,7 +68,7 @@
                             <c:if test="${snum ge 1}">
                                 <tbody class="center">
                                 <c:forEach var="ad" items="${ads}">
-                                        <tr onclick="location.href='/admin/inquiry/detail?adno=${snum}'" style="background:#fcfcfc; color:#555555;">
+                                        <tr onclick="location.href='/admin/inquiry/detail?adno=${ad.adno}'" style="background:#fcfcfc; color:#555555;">
                                             <td>${snum}</td>
                                             <td>${ad.uname}</td>
                                             <td>${ad.ubdate}</td>
@@ -129,9 +129,9 @@
             <div class="right wow fadeInDown" data-wow-delay="0.2s">
                 <div class="adminPage">
                     <div class="adminPageMain">
-                        <a href="/admin/main" class="adminPageMain_box">
-                            <h3>측정</h3>
-                            <p>진단을 통한 측정값을<br>저장합니다.</p>
+                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box adminPageBtnActive">
+                            <h3>조회</h3>
+                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
                         </a>
                     </div>
                     <div class="adminPageMain">
@@ -140,10 +140,10 @@
                             <p>치료 내용을 저장합니다.</p>
                         </a>
                     </div>
-                    <div class="adminPageMain">
-                        <a href="/admin/inquiry?cp=1" class="adminPageMain_box adminPageBtnActive">
-                            <h3>조회</h3>
-                            <p>환자의 피부 측정값과<br>치료 내용을 조회합니다.</p>
+					<div class="adminPageMain">
+                        <a href="/admin/main" class="adminPageMain_box">
+                            <h3>측정</h3>
+                            <p>진단을 통한 측정값을<br>저장합니다.</p>
                         </a>
                     </div>
                 </div>

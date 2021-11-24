@@ -3,24 +3,26 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <% pageContext.setAttribute("replaceChar", "\n"); %>
 
-<%
-  String strReferer = request.getHeader("referer");
+<!--
+<!%
+    String strReferer = request.getHeader("referer");
 
-  if(strReferer == null){
+    if(strReferer == null){
 %>
 <script language="javascript">
-  alert("정상적인 경로를 통해 다시 접근해 주세요.");
-  document.location.href="/";
+    alert("정상적인 경로를 통해 다시 접근해 주세요.");
+    document.location.href="/";
 </script>
-<%
-    return;
-  }
+<!%
+        return;
+    }
 %>
+-->
 
 <c:set var="baseURL" value="${pageContext.request.contextPath}/images/downloadedImages/inquiry/" />
 <c:set var="fnames" value="${fn:split(its.fnames,'/')}"/>
 
-<div id="contents" style="margin-top: 150px; margin-bottom: 150px;">
+<div id="contents">
 
   <div class="titleArea">
     <h2><a href="/inquiry/list?cp=1">1:1 문의</a></h2>
@@ -183,10 +185,10 @@
 
   <c:if test="${sessionScope.MyInfo.uid ne null}">
     <form id="replyfrm" name="replyfrm">
-      <c:if test="${sessionScope.MyInfo.uid eq 'Admin'}">
+      <c:if test="${sessionScope.MyInfo.uid eq 'admin'}">
       <input type="hidden" id="status" name="status" value="true">
       </c:if>
-      <c:if test="${sessionScope.MyInfo.uid ne 'Admin'}">
+      <c:if test="${sessionScope.MyInfo.uid ne 'admin'}">
         <input type="hidden" id="status" name="status" value="false">
       </c:if>
       <input type="hidden" id="uid" name="uid" value="${sessionScope.MyInfo.uid}">
