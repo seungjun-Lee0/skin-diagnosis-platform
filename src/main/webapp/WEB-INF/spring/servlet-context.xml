@@ -54,4 +54,12 @@
 
 
     <context:component-scan base-package="lsj.spring.project" />
+
+    <!-- IoT API 인터셉터 설정 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/api/iot/**"/>
+            <bean class="lsj.spring.project.interceptor.ApiKeyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
