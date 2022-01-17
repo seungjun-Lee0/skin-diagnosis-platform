@@ -5,7 +5,12 @@
  * 센서 데이터를 읽어 백엔드 서버로 전송합니다.
  *
  * 통신 프로토콜: HTTP REST API (JSON)
- * 인증: X-API-Key 헤더
+ * 인증: X-API-Key 헤더 (환경변수 THE3_API_KEY에서 로드)
+ *
+ * Required environment variables:
+ * - THE3_API_KEY: API authentication key (REQUIRED)
+ * - THE3_SERVER_URL: Backend server URL (optional, default: http://localhost:8080)
+ * - THE3_DEVICE_ID: Device identifier (optional, default: THE3-SKIN-DEVICE-001)
  */
 
 #include <iostream>
@@ -15,6 +20,7 @@
 #include <chrono>
 #include <csignal>
 #include <iomanip>
+#include <stdexcept>
 
 #include "Config.h"
 #include "HttpClient.h"
@@ -31,11 +37,11 @@ void signalHandler(int signum)
 }
 
 // JSON 빌더 헬퍼 함수
-std::string buildSkinAnalysisJson(const SkinSensor::SensorData& data)
+std::string buildSkinAnalysisJson(const SkinSensor::SensorData& data, const std::string& deviceId)
 {
     std::ostringstream json;
     json << "{"
-         << "\"deviceId\":\"" << Config::DEVICE_ID << "\","
+         << "\"deviceId\":\"" << deviceId << "\","
          << "\"patientName\":\"" << data.patientName << "\","
          << "\"birthDate\":\"" << data.birthDate << "\","
          << "\"pd1\":\"" << std::fixed << std::setprecision(2) << data.pd1 << "\","
@@ -52,11 +58,11 @@ std::string buildSkinAnalysisJson(const SkinSensor::SensorData& data)
     return json.str();
 }
 
-std::string buildTreatmentJson(const SkinSensor::TreatmentData& data)
+std::string buildTreatmentJson(const SkinSensor::TreatmentData& data, const std::string& deviceId)
 {
     std::ostringstream json;
     json << "{"
-         << "\"deviceId\":\"" << Config::DEVICE_ID << "\","
+         << "\"deviceId\":\"" << deviceId << "\","
          << "\"patientName\":\"" << data.patientName << "\","
          << "\"birthDate\":\"" << data.birthDate << "\",";
 
@@ -107,7 +113,18 @@ void printUsage()
               << "  5. Treatment L       - LED therapy\n"
               << "  6. Check connection  - Test server connection\n"
               << "  7. Auto mode         - Continuous measurement\n"
+              << "  8. Self test         - Run sensor diagnostics\n"
               << "  0. Exit\n"
+              << std::endl;
+}
+
+void printEnvironmentInfo()
+{
+    std::cout << "Environment Configuration:\n"
+              << "  THE3_SERVER_URL: " << Config::getServerUrl() << "\n"
+              << "  THE3_DEVICE_ID:  " << Config::getDeviceId() << "\n"
+              << "  THE3_API_KEY:    " << (std::getenv("THE3_API_KEY") ? "[SET]" : "[NOT SET]") << "\n"
+              << "  THE3_LOG_LEVEL:  " << Config::Logging::getLogLevel() << "\n"
               << std::endl;
 }
 
@@ -119,14 +136,39 @@ int main(int argc, char* argv[])
 
     std::cout << "========================================\n"
               << "  THE 3.0 Skin Analysis IoT Device\n"
-              << "  Version: 1.0.0\n"
-              << "  Device ID: " << Config::DEVICE_ID << "\n"
+              << "  Firmware: " << Config::FIRMWARE_VERSION << "\n"
+              << "  Hardware: " << Config::HARDWARE_VERSION << "\n"
               << "========================================\n\n";
 
+    // Print environment configuration
+    printEnvironmentInfo();
+
+    // Load configuration from environment variables
+    std::string serverUrl;
+    std::string apiKey;
+    std::string deviceId;
+
+    try {
+        serverUrl = Config::getServerUrl();
+        apiKey = Config::getApiKey();
+        deviceId = Config::getDeviceId();
+    } catch (const std::runtime_error& e) {
+        std::cerr << "[ERROR] Configuration error: " << e.what() << std::endl;
+        std::cerr << "\nPlease set required environment variables:\n"
+                  << "  export THE3_API_KEY=your_api_key\n"
+                  << "  export THE3_SERVER_URL=http://your-server:8080 (optional)\n"
+                  << std::endl;
+        return 1;
+    }
+
+    std::cout << "[OK] Configuration loaded\n";
+    std::cout << "  Server: " << serverUrl << "\n";
+    std::cout << "  Device: " << deviceId << "\n\n";
+
     // HTTP 클라이언트 초기화
-    HttpClient httpClient(Config::SERVER_URL, Config::API_KEY);
+    HttpClient httpClient(serverUrl, apiKey);
     if (!httpClient.initialize()) {
-        std::cerr << "Failed to initialize HTTP client" << std::endl;
+        std::cerr << "[ERROR] Failed to initialize HTTP client" << std::endl;
         return 1;
     }
     std::cout << "[OK] HTTP client initialized\n";
@@ -134,16 +176,18 @@ int main(int argc, char* argv[])
     // 센서 초기화
     SkinSensor sensor;
     if (!sensor.initialize()) {
-        std::cerr << "Failed to initialize sensor" << std::endl;
+        std::cerr << "[ERROR] Failed to initialize sensor" << std::endl;
         return 1;
     }
     std::cout << "[OK] Sensor initialized\n";
 
     // 센서 캘리브레이션
     if (!sensor.calibrate()) {
-        std::cerr << "Warning: Sensor calibration failed" << std::endl;
+        std::cerr << "[WARN] Sensor calibration failed, using defaults" << std::endl;
+    } else {
+        std::cout << "[OK] Sensor calibrated\n";
     }
-    std::cout << "[OK] Sensor calibrated\n\n";
+    std::cout << "\n";
 
     // 환자 정보 설정 (테스트용)
     std::string patientName, birthDate;
@@ -164,14 +208,20 @@ int main(int argc, char* argv[])
 
         if (input.empty()) continue;
 
-        int command = std::stoi(input);
+        int command;
+        try {
+            command = std::stoi(input);
+        } catch (...) {
+            std::cout << "Invalid input\n\n";
+            continue;
+        }
 
         switch (command) {
             case 1: {
                 // 피부 측정
                 std::cout << "\n[Measuring skin...]\n";
                 auto data = sensor.readSensorData();
-                std::string json = buildSkinAnalysisJson(data);
+                std::string json = buildSkinAnalysisJson(data, deviceId);
 
                 std::cout << "Sending data to server...\n";
                 auto response = httpClient.post(Config::API_ENDPOINT_SKIN, json);
@@ -203,7 +253,7 @@ int main(int argc, char* argv[])
 
                 std::cout << "\n[Starting " << modeName << " therapy...]\n";
                 auto treatmentData = sensor.createTreatmentData(mode);
-                std::string json = buildTreatmentJson(treatmentData);
+                std::string json = buildTreatmentJson(treatmentData, deviceId);
 
                 std::cout << "Sending treatment data to server...\n";
                 auto response = httpClient.post(Config::API_ENDPOINT_TREATMENT, json);
@@ -231,23 +281,48 @@ int main(int argc, char* argv[])
             case 7: {
                 // 자동 모드
                 std::cout << "\n[Auto mode started. Press Ctrl+C to stop.]\n";
+                int successCount = 0;
+                int failCount = 0;
+
                 while (g_running) {
                     auto data = sensor.readSensorData();
-                    std::string json = buildSkinAnalysisJson(data);
+                    std::string json = buildSkinAnalysisJson(data, deviceId);
                     auto response = httpClient.post(Config::API_ENDPOINT_SKIN, json);
 
                     if (response.success) {
                         std::cout << ".";
-                        std::cout.flush();
+                        successCount++;
                     } else {
                         std::cout << "x";
-                        std::cout.flush();
+                        failCount++;
                     }
+                    std::cout.flush();
 
                     std::this_thread::sleep_for(
                         std::chrono::milliseconds(Config::DATA_SEND_INTERVAL_MS));
                 }
+
                 std::cout << "\n[Auto mode stopped]\n";
+                std::cout << "  Sent: " << successCount << ", Failed: " << failCount << "\n";
+                break;
+            }
+
+            case 8: {
+                // Self test
+                std::cout << "\n[Running self-test...]\n";
+                uint8_t status = sensor.selfTest();
+
+                if (status == 0) {
+                    std::cout << "[SUCCESS] All sensors OK\n";
+                } else {
+                    std::cout << "[WARN] Sensor issues detected:\n";
+                    if (status & 0x01) std::cout << "  - ADC (ADS1115) failure\n";
+                    if (status & 0x02) std::cout << "  - Moisture sensor (SHT31) failure\n";
+                    if (status & 0x04) std::cout << "  - ToF sensor (VL6180X) failure\n";
+                    if (status & 0x08) std::cout << "  - EEPROM (AT24C256) failure\n";
+                }
+
+                std::cout << "\nSerial number: " << sensor.getSerialNumber() << "\n";
                 break;
             }
 
