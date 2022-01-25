@@ -1,0 +1,96 @@
+{
+  "Description": "CloudWatch Alarms for THE3.0 Medical IoT Platform",
+  "Alarms": [
+    {
+      "AlarmName": "THE3-EC2-HighCPU",
+      "AlarmDescription": "Alert when EC2 CPU exceeds 80%",
+      "MetricName": "CPUUtilization",
+      "Namespace": "AWS/EC2",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "ActionsEnabled": true,
+      "AlarmActions": ["arn:aws:sns:ap-northeast-2:ACCOUNT_ID:the3-alerts"]
+    },
+    {
+      "AlarmName": "THE3-EC2-HighMemory",
+      "AlarmDescription": "Alert when EC2 memory exceeds 85%",
+      "MetricName": "mem_used_percent",
+      "Namespace": "CWAgent",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 85,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "ActionsEnabled": true,
+      "AlarmActions": ["arn:aws:sns:ap-northeast-2:ACCOUNT_ID:the3-alerts"]
+    },
+    {
+      "AlarmName": "THE3-RDS-HighCPU",
+      "AlarmDescription": "Alert when RDS CPU exceeds 80%",
+      "MetricName": "CPUUtilization",
+      "Namespace": "AWS/RDS",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "ActionsEnabled": true,
+      "AlarmActions": ["arn:aws:sns:ap-northeast-2:ACCOUNT_ID:the3-alerts"]
+    },
+    {
+      "AlarmName": "THE3-RDS-LowStorage",
+      "AlarmDescription": "Alert when RDS free storage is below 5GB",
+      "MetricName": "FreeStorageSpace",
+      "Namespace": "AWS/RDS",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 5368709120,
+      "ComparisonOperator": "LessThanThreshold",
+      "ActionsEnabled": true,
+      "AlarmActions": ["arn:aws:sns:ap-northeast-2:ACCOUNT_ID:the3-alerts"]
+    },
+    {
+      "AlarmName": "THE3-RDS-HighConnections",
+      "AlarmDescription": "Alert when RDS connections exceed 80% of max",
+      "MetricName": "DatabaseConnections",
+      "Namespace": "AWS/RDS",
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 40,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "ActionsEnabled": true,
+      "AlarmActions": ["arn:aws:sns:ap-northeast-2:ACCOUNT_ID:the3-alerts"]
+    },
+    {
+      "AlarmName": "THE3-ALB-HighLatency",
+      "AlarmDescription": "Alert when ALB latency exceeds 2 seconds",
+      "MetricName": "TargetResponseTime",
+      "Namespace": "AWS/ApplicationELB",
+      "Statistic": "Average",
+      "Period": 60,
+      "EvaluationPeriods": 3,
+      "Threshold": 2,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "ActionsEnabled": true,
+      "AlarmActions": ["arn:aws:sns:ap-northeast-2:ACCOUNT_ID:the3-alerts"]
+    },
+    {
+      "AlarmName": "THE3-ALB-5xxErrors",
+      "AlarmDescription": "Alert when 5xx errors exceed 10 per minute",
+      "MetricName": "HTTPCode_Target_5XX_Count",
+      "Namespace": "AWS/ApplicationELB",
+      "Statistic": "Sum",
+      "Period": 60,
+      "EvaluationPeriods": 2,
+      "Threshold": 10,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "ActionsEnabled": true,
+      "AlarmActions": ["arn:aws:sns:ap-northeast-2:ACCOUNT_ID:the3-alerts"]
+    }
+  ]
+}

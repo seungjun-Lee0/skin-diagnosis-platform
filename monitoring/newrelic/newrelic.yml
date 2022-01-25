@@ -1,0 +1,82 @@
+# New Relic Java Agent Configuration
+# https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file
+
+common: &default_settings
+  license_key: '<%= ENV["NEW_RELIC_LICENSE_KEY"] %>'
+
+  app_name: THE3.0 Medical IoT Platform
+
+  log_level: info
+
+  audit_mode: false
+
+  high_security: false
+
+  enable_auto_app_naming: false
+
+  enable_auto_transaction_naming: true
+
+  # Transaction tracer
+  transaction_tracer:
+    enabled: true
+    transaction_threshold: apdex_f
+    record_sql: obfuscated
+    log_sql: false
+    stack_trace_threshold: 0.5
+    explain_enabled: true
+    explain_threshold: 0.5
+
+  # Error collector
+  error_collector:
+    enabled: true
+    ignore_errors:
+    ignore_status_codes: 404
+
+  # Transaction events
+  transaction_events:
+    enabled: true
+    max_samples_stored: 2000
+
+  # Distributed tracing
+  distributed_tracing:
+    enabled: true
+
+  # Application logging
+  application_logging:
+    enabled: true
+    forwarding:
+      enabled: true
+      max_samples_stored: 10000
+    metrics:
+      enabled: true
+    local_decorating:
+      enabled: false
+
+  # Browser monitoring (optional)
+  browser_monitoring:
+    auto_instrument: true
+
+  # Custom attributes
+  attributes:
+    enabled: true
+    include:
+      - request.parameters.*
+    exclude:
+      - request.parameters.password
+      - request.parameters.upwd
+
+# Development environment
+development:
+  <<: *default_settings
+  app_name: THE3.0 Medical IoT Platform (Development)
+
+# Staging environment
+staging:
+  <<: *default_settings
+  app_name: THE3.0 Medical IoT Platform (Staging)
+
+# Production environment
+production:
+  <<: *default_settings
+  app_name: THE3.0 Medical IoT Platform (Production)
+  log_level: warning

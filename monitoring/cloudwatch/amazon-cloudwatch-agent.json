@@ -1,0 +1,96 @@
+{
+  "agent": {
+    "metrics_collection_interval": 60,
+    "run_as_user": "root"
+  },
+  "metrics": {
+    "namespace": "THE3/EC2",
+    "metrics_collected": {
+      "cpu": {
+        "measurement": [
+          "cpu_usage_idle",
+          "cpu_usage_user",
+          "cpu_usage_system"
+        ],
+        "metrics_collection_interval": 60,
+        "totalcpu": true
+      },
+      "disk": {
+        "measurement": [
+          "used_percent",
+          "inodes_free"
+        ],
+        "metrics_collection_interval": 60,
+        "resources": [
+          "/"
+        ]
+      },
+      "diskio": {
+        "measurement": [
+          "io_time",
+          "read_bytes",
+          "write_bytes"
+        ],
+        "metrics_collection_interval": 60,
+        "resources": [
+          "*"
+        ]
+      },
+      "mem": {
+        "measurement": [
+          "mem_used_percent",
+          "mem_available_percent"
+        ],
+        "metrics_collection_interval": 60
+      },
+      "net": {
+        "measurement": [
+          "bytes_sent",
+          "bytes_recv",
+          "packets_sent",
+          "packets_recv"
+        ],
+        "metrics_collection_interval": 60,
+        "resources": [
+          "eth0"
+        ]
+      },
+      "swap": {
+        "measurement": [
+          "swap_used_percent"
+        ],
+        "metrics_collection_interval": 60
+      }
+    },
+    "append_dimensions": {
+      "InstanceId": "${aws:InstanceId}",
+      "AutoScalingGroupName": "${aws:AutoScalingGroupName}"
+    }
+  },
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/tomcat/catalina.out",
+            "log_group_name": "/the3/application",
+            "log_stream_name": "{instance_id}/catalina",
+            "timezone": "Asia/Seoul"
+          },
+          {
+            "file_path": "/var/log/tomcat/localhost_access_log.*.txt",
+            "log_group_name": "/the3/access",
+            "log_stream_name": "{instance_id}/access",
+            "timezone": "Asia/Seoul"
+          },
+          {
+            "file_path": "/var/log/messages",
+            "log_group_name": "/the3/system",
+            "log_stream_name": "{instance_id}/messages",
+            "timezone": "Asia/Seoul"
+          }
+        ]
+      }
+    }
+  }
+}
