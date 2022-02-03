@@ -1,2 +1,25 @@
 target/
 .claude/
+
+# Data files (CSV imports)
+data/
+
+# New Relic
+newrelic/logs/
+newrelic/newrelic.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+nul
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

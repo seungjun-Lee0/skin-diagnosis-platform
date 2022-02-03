@@ -19,8 +19,9 @@ public class ApiKeyInterceptor implements HandlerInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(ApiKeyInterceptor.class);
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    // API Key 설정 (실제 운영 환경에서는 DB 또는 환경변수로 관리)
-    private static final String VALID_API_KEY = "THE3-IOT-API-KEY-2024";
+    // API Key - 환경변수(IOT_API_KEY)에서 읽고, 없으면 기본값 사용
+    private static final String VALID_API_KEY =
+            System.getenv("IOT_API_KEY") != null ? System.getenv("IOT_API_KEY") : "THE3-IOT-API-KEY-2021";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
