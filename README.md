@@ -30,7 +30,6 @@ This project is a full-stack web platform developed for **THE 3.0 Co., Ltd.** as
 | **IoT Module** | C++14, libcurl, CMake |
 | **Build** | Maven 3.x |
 | **Deployment** | AWS EC2, RDS, S3 |
-| **Monitoring** | AWS CloudWatch, New Relic APM |
 
 ## System Architecture
 
@@ -110,17 +109,6 @@ the3.0-dermatology-hospital-website/
 │   │   └── SkinSensor.cpp
 │   ├── CMakeLists.txt
 │   └── README.md
-├── monitoring/                  # Monitoring Configuration
-│   ├── cloudwatch/
-│   │   ├── amazon-cloudwatch-agent.json
-│   │   └── cloudwatch-alarms.json
-│   └── newrelic/
-│       └── newrelic.yml
-├── scripts/                     # Deployment Scripts
-│   ├── deploy.sh
-│   └── setup-monitoring.sh
-├── docs/                        # Documentation
-│   └── architecture.md
 ├── docker-compose.yml           # MySQL Container
 ├── init.sql                     # Database Schema
 └── pom.xml                      # Maven Configuration
@@ -182,7 +170,7 @@ Open browser: `http://localhost:8080`
 All API requests require the `X-API-Key` header:
 
 ```
-X-API-Key: THE3-IOT-API-KEY-2021
+X-API-Key: THE3-IOT-API-KEY-2024
 ```
 
 ### Sample Request
@@ -190,7 +178,7 @@ X-API-Key: THE3-IOT-API-KEY-2021
 ```json
 POST /api/iot/skin-analysis
 Content-Type: application/json
-X-API-Key: THE3-IOT-API-KEY-2021
+X-API-Key: THE3-IOT-API-KEY-2024
 
 {
   "deviceId": "THE3-SKIN-DEVICE-001",
@@ -307,7 +295,6 @@ This project was developed as part of a government-funded R&D project (Project N
 | **IoT 모듈** | C++14, libcurl, CMake |
 | **빌드** | Maven 3.x |
 | **배포** | AWS EC2, RDS, S3 |
-| **모니터링** | AWS CloudWatch, New Relic APM |
 
 ## 설치 및 실행
 
@@ -359,7 +346,7 @@ mvn tomcat7:run
 모든 API 요청에 `X-API-Key` 헤더 필요:
 
 ```
-X-API-Key: THE3-IOT-API-KEY-2021
+X-API-Key: THE3-IOT-API-KEY-2024
 ```
 
 ## 환경 변수
